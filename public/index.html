@@ -24,6 +24,7 @@
             --text-dim: #9ca3af;
             --glass: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.1);
+            --success: #10b981;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -98,10 +99,10 @@
         }
 
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; display: flex; align-items: center; gap: 0.5rem; }
+        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: white; }
         .logo i { color: var(--accent); }
 
-        .hero { padding: 10rem 0 6rem; text-align: center; }
+        .hero { padding: 8rem 0 6rem; text-align: center; }
         .hero-badge {
             display: inline-block;
             padding: 0.4rem 1rem;
@@ -116,7 +117,7 @@
             letter-spacing: 1px;
         }
 
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; line-height: 1; margin-bottom: 2rem; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 2rem; }
         .gradient-text {
             background: linear-gradient(90deg, var(--accent), var(--primary), var(--secondary));
             -webkit-background-clip: text;
@@ -124,16 +125,21 @@
             color: transparent;
         }
 
-        .hero p { max-width: 600px; margin: 0 auto 3rem; color: var(--text-dim); font-size: 1.2rem; }
+        .hero p { max-width: 700px; margin: 0 auto 3.5rem; color: var(--text-dim); font-size: 1.25rem; font-weight: 500; }
 
         .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1.25rem 3rem;
+            border-radius: 14px;
             font-weight: 700;
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
         }
 
         .btn-primary {
@@ -149,8 +155,9 @@
         }
 
         /* --- Sections --- */
-        section { padding: 8rem 0; }
-        .section-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 4rem; text-align: center; }
+        section { padding: 6rem 0; }
+        .section-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 1.5rem; text-align: center; }
+        .section-subtitle { text-align: center; color: var(--text-dim); margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto; }
         
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
         
@@ -160,13 +167,36 @@
             padding: 2.5rem;
             border-radius: 24px;
             backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--primary); 
+            box-shadow: 0 20px 40px -20px rgba(139, 92, 246, 0.3);
+        }
         .card i { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--accent); }
         .card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
         .card p { color: var(--text-dim); }
+
+        /* --- Local Benefit List --- */
+        .benefit-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        .benefit-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+        .benefit-list i {
+            color: var(--success);
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
 
         /* --- Portfolio --- */
         .portfolio-item {
@@ -179,7 +209,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: border-color 0.3s ease;
         }
+        .portfolio-item:hover { border-color: var(--accent); }
         .portfolio-overlay {
             position: absolute;
             bottom: 0; left: 0; width: 100%;
@@ -196,28 +228,51 @@
             border: 1px solid var(--glass-border);
             padding: 4rem;
             border-radius: 32px;
+            position: relative;
+            overflow: hidden;
         }
 
         .profile-img {
-            width: 200px;
-            height: 200px;
-            background: var(--gradient);
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 50%;
             display: flex;
             align-items: center; justify-content: center;
-            font-size: 5rem;
+            font-size: 4.5rem;
             flex-shrink: 0;
             border: 4px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
+        /* --- FAQ --- */
+        .faq { max-width: 800px; margin: 0 auto; }
+        .faq-item {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .faq-q { font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); display: flex; gap: 0.5rem; }
+        .faq-a { color: var(--text-dim); font-size: 0.95rem; }
+
         /* --- Footer/CTA --- */
-        .cta-section { text-align: center; background: linear-gradient(rgba(139, 92, 246, 0.1), transparent); border-radius: 40px; padding: 6rem 2rem; }
+        .cta-section { 
+            text-align: center; 
+            background: linear-gradient(rgba(139, 92, 246, 0.15), transparent); 
+            border-radius: 40px; 
+            padding: 6rem 2rem;
+            border: 1px solid var(--glass-border);
+        }
         
         footer { padding: 4rem 0; text-align: center; border-top: 1px solid var(--glass-border); color: var(--text-dim); font-size: 0.9rem; }
 
         @media (max-width: 768px) {
-            .profile-box { flex-direction: column; text-align: center; padding: 2rem; }
-            .hero h1 { font-size: 3rem; }
+            .profile-box { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; gap: 2rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .profile-img { width: 140px; height: 140px; font-size: 3.5rem; }
+            section { padding: 4rem 0; }
         }
     </style>
 </head>
@@ -226,58 +281,86 @@
 
     <header>
         <div class="container nav-content">
-            <div class="logo"><i class="fas fa-bolt-lightning"></i> AI爆速開発</div>
-            <a href="mailto:diegobacigalupo8@gmail.com" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">相談する</a>
+            <a href="#" class="logo"><i class="fas fa-bolt-lightning"></i> AI爆速開発</a>
+            <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem; border-radius: 10px;">無料相談はこちら</a>
         </div>
     </header>
 
     <main>
         <section class="hero">
             <div class="container">
-                <div class="hero-badge">Ushiku City, Ibaraki</div>
-                <h1>AIで<span class="gradient-text">爆速</span>の<br>未来を実装する</h1>
-                <p>14年の経験を持つエンジニアが、最新のAI技術を駆使してWeb開発、業務自動化、DX推進を圧倒的なスピードで実現します。</p>
-                <a href="#contact" class="btn btn-primary">プロジェクトを始める</a>
+                <div class="hero-badge">茨城県牛久市・つくば市・土浦市 対応</div>
+                <h1>地元のビジネスに、<br><span class="gradient-text">AIの加速力</span>を。</h1>
+                <p>
+                    「AIって難しそう」「何から始めればいいかわからない」<br>
+                    そんな牛久の中小企業様へ。14年の開発経験を持つエンジニアが、<br>
+                    あなたの現場に最適なAI活用を「爆速」で実装します。
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-comments"></i> 30分の無料相談を予約する
+                    </a>
+                    <a href="#services" class="btn" style="background: var(--glass); border: 1px solid var(--glass-border); color: white;">
+                        解決できる課題を見る
+                    </a>
+                </div>
             </div>
         </section>
 
         <section id="services">
             <div class="container">
-                <h2 class="section-title">Services</h2>
+                <h2 class="section-title">中小企業のためのAI活用メニュー</h2>
+                <p class="section-subtitle">「ITの専門家がいない」とお悩みの企業様でも安心してお任せいただけます。</p>
                 <div class="grid">
                     <div class="card">
-                        <i class="fas fa-code"></i>
-                        <h3>Webアプリ開発</h3>
-                        <p>AIによるコード生成をフル活用し、高品質なWebアプリを最短数日でプロトタイプ化します。</p>
+                        <i class="fas fa-robot"></i>
+                        <h3>問い合わせ自動化</h3>
+                        <p>ChatGPTを活用し、LINEやWebサイト上で24時間365日、自動でお客様対応を行うボットを構築します。</p>
+                        <ul class="benefit-list">
+                            <li><i class="fas fa-check-circle"></i> スタッフの電話対応時間を削減</li>
+                            <li><i class="fas fa-check-circle"></i> 夜間の見込み客を逃さない</li>
+                        </ul>
                     </div>
                     <div class="card">
-                        <i class="fas fa-microchip"></i>
-                        <h3>業務自動化</h3>
-                        <p>ChatGPT等のAPIを既存業務に統合。毎日のルーチンワークを自動化し、生産性を最大化します。</p>
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                        <h3>事務作業の爆速化</h3>
+                        <p>請求書や日報、SNS投稿の作成など、時間のかかるデスクワークをAIが数秒で終わらせる仕組みを作ります。</p>
+                        <ul class="benefit-list">
+                            <li><i class="fas fa-check-circle"></i> 事務コストを大幅にカット</li>
+                            <li><i class="fas fa-check-circle"></i> 入力ミスや漏れをゼロに</li>
+                        </ul>
                     </div>
                     <div class="card">
-                        <i class="fas fa-brain"></i>
-                        <h3>AI活用コンサル</h3>
-                        <p>中小企業がAIをどう導入すべきか。14年の現場経験に基づき、実利のあるDXを提案します。</p>
+                        <i class="fas fa-magnifying-glass-chart"></i>
+                        <h3>データ活用・集客支援</h3>
+                        <p>顧客データや売上をAIで分析。地元のニーズに合わせた最適な販促プランを提案・実行支援します。</p>
+                        <ul class="benefit-list">
+                            <li><i class="fas fa-check-circle"></i> 牛久周辺の市場に合わせた集客</li>
+                            <li><i class="fas fa-check-circle"></i> リピート率の向上をデータで実現</li>
+                        </ul>
                     </div>
                     <div class="card">
-                        <i class="fas fa-mobile-screen"></i>
-                        <h3>アプリ開発</h3>
-                        <p>iiba等のモバイルアプリ開発実績。アイデアからリリースまで、AIと共に駆け抜けます。</p>
+                        <i class="fas fa-rocket"></i>
+                        <h3>新規事業・アプリ開発</h3>
+                        <p>AIを搭載した独自のWebサービスやスマホアプリを、最新ツールを用いて圧倒的な速さでリリースします。</p>
+                        <ul class="benefit-list">
+                            <li><i class="fas fa-check-circle"></i> 最小限の投資でテストが可能</li>
+                            <li><i class="fas fa-check-circle"></i> 14年の経験で安定した品質</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="portfolio">
+        <section id="portfolio" style="background: rgba(0,0,0,0.2);">
             <div class="container">
-                <h2 class="section-title">Portfolio</h2>
+                <h2 class="section-title">開発実績</h2>
                 <div class="grid">
                     <div class="portfolio-item">
                         <div style="font-size: 5rem; color: var(--accent);"><i class="fas fa-baby"></i></div>
                         <div class="portfolio-overlay">
                             <h3>iiba</h3>
-                            <p>AI開発による次世代モバイルアプリ</p>
+                            <p>AIを活用した次世代モバイルアプリ開発</p>
                         </div>
                     </div>
                     <div class="portfolio-item">
@@ -285,9 +368,29 @@
                         <div class="portfolio-overlay">
                             <a href="https://ehon-assistant.jp" target="_blank" style="color: white; text-decoration: none;">
                                 <h3>絵本アシスタント <i class="fas fa-external-link-alt" style="font-size: 1rem;"></i></h3>
-                                <p>AI絵本作成支援プラットフォーム</p>
+                                <p>AI絵本作成支援。企画から実装までAIで完結。</p>
                             </a>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="container">
+                <h2 class="section-title">よくあるご質問</h2>
+                <div class="faq">
+                    <div class="faq-item">
+                        <div class="faq-q"><span>Q.</span> AIのことは全くわかりませんが大丈夫ですか？</div>
+                        <div class="faq-a">A. はい、もちろんです。専門用語を使わず、お客様のビジネスがどう楽になるか、具体的にお話しさせていただきます。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q"><span>Q.</span> 予算が少なくても相談できますか？</div>
+                        <div class="faq-a">A. ご安心ください。まずはスモールスタートで効果を実感いただけるプランを、ご予算に合わせてご提案いたします。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q"><span>Q.</span> 対面での相談は可能ですか？</div>
+                        <div class="faq-a">A. はい。牛久市・つくば市周辺であれば、直接お伺いしての打ち合わせも可能です。地元のエンジニアだからこそのフットワークで対応します。</div>
                     </div>
                 </div>
             </div>
@@ -298,9 +401,14 @@
                 <div class="profile-box">
                     <div class="profile-img">👨‍💻</div>
                     <div>
-                        <h2 style="margin-bottom: 1rem;">Diego Alessandro</h2>
-                        <p style="color: var(--accent); font-weight: 700; margin-bottom: 1.5rem;">Freelance Engineer / AI Specialist</p>
-                        <p>IT業界14年。フルサイクル開発から泥臭い現場まで経験してきたからこそ、地に足の着いたAI活用が提案できます。茨城県牛久市を拠点に、地元の企業の「爆速」な成長を支えます。</p>
+                        <h2 style="margin-bottom: 0.5rem;">Diego Alessandro</h2>
+                        <p style="color: var(--accent); font-weight: 700; margin-bottom: 1.5rem;">AI爆速開発 代表 / IT業界14年</p>
+                        <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                            「ITの力で、地元のビジネスをもっと元気にしたい」
+                        </p>
+                        <p>
+                            IT業界で14年、数多くの開発プロジェクトに携わってきました。AIは今や大企業だけのものではありません。牛久の皆様が、AIを「頼れる従業員」として活用できるよう、開発から運用まで泥臭くサポートさせていただきます。
+                        </p>
                     </div>
                 </div>
             </div>
@@ -309,11 +417,17 @@
         <section id="contact">
             <div class="container">
                 <div class="cta-section">
-                    <h2 style="font-size: 3rem; margin-bottom: 1rem;">Ready to Accelerate?</h2>
-                    <p style="margin-bottom: 3rem;">AIの導入、業務の自動化、新しいアイデアの形。何でもご相談ください。</p>
-                    <a href="mailto:diegobacigalupo8@gmail.com" class="btn btn-primary" style="font-size: 1.5rem;">
-                        <i class="fas fa-envelope"></i> 相談する（初回無料）
+                    <h2 style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1.5rem;">まずは、あなたの<br>「困りごと」をお聞かせください</h2>
+                    <p style="margin-bottom: 3.5rem; font-size: 1.2rem; color: var(--text-dim);">
+                        無理な勧誘は一切ありません。地元の知り合いに相談する感覚で、<br>
+                        気軽にお問い合わせください。
+                    </p>
+                    <a href="mailto:diegobacigalupo8@gmail.com" class="btn btn-primary" style="font-size: 1.4rem;">
+                        <i class="fas fa-envelope"></i> メールで無料相談する
                     </a>
+                    <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-dim);">
+                        ※牛久・つくば周辺は訪問相談も承ります
+                    </p>
                 </div>
             </div>
         </section>
@@ -322,7 +436,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 AI爆速開発 (Diego Alessandro). All Rights Reserved.</p>
-            <p style="margin-top: 1rem; opacity: 0.5; font-size: 0.7rem;">Design & Implementation Powered by Gemini 3 Flash</p>
+            <p style="margin-top: 1rem; opacity: 0.4; font-size: 0.7rem;">Ushiku, Ibaraki, Japan</p>
         </div>
     </footer>
 </body>
