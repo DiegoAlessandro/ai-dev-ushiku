@@ -4,986 +4,326 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!--
-    ============================================
-    LP Design: AI-generated (Claude Opus 4.6)
-    Styling: Modern gradient, glassmorphism, animations
-    ============================================
-    -->
-    
     <!-- SEO Meta Tags -->
-    <title>AI爆速開発 | 牛久市 | Web開発・業務自動化・AI活用支援</title>
-    <meta name="description" content="牛久市を中心にAIを活用した爆速Web開発・業務自動化サービスを提供。14年経験のエンジニアがChatGPT・AIを組み合わせた業務効率化を提案。iiba・絵本アシスタント実績あり。牛久市・つくば市・龍ヶ崎市の中小企業様向け。">
-    <meta name="keywords" content="AI開発, Web開発, 牛久市, 業務自動化, ChatGPT活用, フリーランス, エンジニア, 茨城県, AIアプリ開発, DX推進, 中小企業, 稲敷郡, つくば市, 龍ヶ崎市, Python, AI導入, 爆速開発">
-    <meta name="author" content="AI爆速開発">
-    <meta name="robots" content="index, follow">
-    <meta name="canonical" content="https://diegoalessandro.github.io/ai-dev-ushiku/">
+    <title>AI爆速開発 | 牛久市 | 茨城のDX・業務自動化パートナー</title>
+    <meta name="description" content="茨城県牛久市を拠点に、AIを活用した爆速Web開発・業務自動化サービスを提供。14年のエンジニア経験を活かし、中小企業のDXを最短距離で実現します。iiba・絵本アシスタント実績あり。">
+    <meta name="keywords" content="AI開発, Web開発, 牛久市, 業務自動化, ChatGPT活用, フリーランス, エンジニア, 茨城県, AIアプリ開発, DX推進, 中小企業, つくば市, 龍ヶ崎市, 爆速開発">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="AI爆速開発 | 牛久市">
-    <meta property="og:description" content="AIを活用した爆速Web開発・業務自動化サービス">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="ja_JP">
-    <meta property="og:url" content="https://diegoalessandro.github.io/ai-dev-ushiku/">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AI爆速開発 | 牛久市">
-    <meta name="twitter:description" content="AIを活用した爆速Web開発・業務自動化サービス">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #8b5cf6;
-            --accent: #f472b6;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            --bg: #030712;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --primary: #8b5cf6;
+            --secondary: #ec4899;
+            --accent: #06b6d4;
+            --text: #f3f4f6;
+            --text-dim: #9ca3af;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            color: var(--dark);
-            background: var(--light);
             overflow-x: hidden;
         }
-        
-        /* Animated Background */
-        .bg-animation {
+
+        /* --- Gemini Design: Dynamic Cyber Background --- */
+        .cyber-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #030712 100%);
         }
-        
-        .bg-animation::before {
-            content: '';
+
+        .cyber-grid {
             position: absolute;
-            top: -50%;
-            left: -50%;
             width: 200%;
             height: 200%;
-            background: 
-                radial-gradient(ellipse at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 40% 40%, rgba(244, 114, 182, 0.1) 0%, transparent 40%);
-            animation: bgMove 20s ease-in-out infinite;
+            top: -50%;
+            left: -50%;
+            background-image: 
+                linear-gradient(var(--glass-border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(500px) rotateX(60deg);
+            animation: grid-move 20s linear infinite;
+            opacity: 0.2;
         }
-        
-        @keyframes bgMove {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(2%, 2%) rotate(1deg); }
-            66% { transform: translate(-1%, 1%) rotate(-1deg); }
+
+        @keyframes grid-move {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
         }
+
+        .glow {
+            position: absolute;
+            width: 40vw;
+            height: 40vw;
+            background: var(--primary);
+            filter: blur(15vw);
+            border-radius: 50%;
+            opacity: 0.15;
+            top: 10%;
+            right: -10%;
+            animation: pulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); opacity: 0.1; }
+            to { transform: scale(1.2); opacity: 0.2; }
+        }
+
+        /* --- Layout --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
         
-        /* Header */
         header {
-            position: fixed;
+            padding: 1.5rem 0;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
-            transition: all 0.3s ease;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
         }
-        
-        header.scrolled {
-            padding: 0.75rem 5%;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .logo i {
-            -webkit-text-fill-color: var(--primary);
-            margin-right: 0.5rem;
-        }
-        
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        nav a {
-            color: var(--gray);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        nav a:hover {
-            color: var(--primary);
-        }
-        
-        .cta-button {
-            background: var(--gradient);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 5% 4rem;
-            text-align: center;
-            position: relative;
-        }
-        
-        .hero-content {
-            max-width: 900px;
-            position: relative;
-            z-index: 1;
-        }
-        
+
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; display: flex; align-items: center; gap: 0.5rem; }
+        .logo i { color: var(--accent); }
+
+        .hero { padding: 10rem 0 6rem; text-align: center; }
         .hero-badge {
             display: inline-block;
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease;
-        }
-        
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease 0.1s both;
-        }
-        
-        .hero h1 .highlight {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.3s both;
-        }
-        
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
-        }
-        
-        .btn-secondary {
-            background: white;
-            color: var(--dark);
-            border: 2px solid rgba(99, 102, 241, 0.2);
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-        
-        /* Floating Elements */
-        .floating {
-            position: absolute;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .floating-1 {
-            top: 20%;
-            left: 10%;
-            width: 80px;
-            height: 80px;
-            background: rgba(99, 102, 241, 0.1);
-            border-radius: 20px;
-            transform: rotate(15deg);
-        }
-        
-        .floating-2 {
-            top: 30%;
-            right: 10%;
-            width: 60px;
-            height: 60px;
-            background: rgba(139, 92, 246, 0.1);
-            border-radius: 50%;
-            animation-delay: -2s;
-        }
-        
-        .floating-3 {
-            bottom: 20%;
-            left: 15%;
-            width: 40px;
-            height: 40px;
-            background: rgba(244, 114, 182, 0.1);
-            border-radius: 10px;
-            animation-delay: -4s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Services Section */
-        .services {
-            padding: 6rem 5%;
-            position: relative;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-header h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .section-header p {
-            color: var(--gray);
-            font-size: 1.125rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 24px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .service-card p {
-            color: var(--gray);
-            line-height: 1.7;
-        }
-        
-        /* Target Section */
-        .targets {
-            padding: 6rem 5%;
-            background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.05) 100%);
-        }
-        
-        .targets-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .target-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .target-card:hover {
-            border-color: var(--primary);
-            transform: scale(1.02);
-        }
-        
-        .target-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .target-card h3 {
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
-        .target-card p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        
-        /* Portfolio Section */
-        .portfolio {
-            padding: 6rem 5%;
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .portfolio-card {
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-        
-        .portfolio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-        }
-        
-        .portfolio-image {
-            height: 200px;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-        }
-        
-        .portfolio-content {
-            padding: 2rem;
-        }
-        
-        .portfolio-content h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
-        .portfolio-content .tag {
-            display: inline-block;
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
+            padding: 0.4rem 1rem;
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid var(--primary);
+            border-radius: 100px;
             font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .portfolio-content p {
-            color: var(--gray);
-        }
-        
-        .portfolio-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: gap 0.3s ease;
-        }
-        
-        .portfolio-link:hover {
-            gap: 1rem;
-        }
-        
-        /* Profile Section */
-        .profile {
-            padding: 6rem 5%;
-            background: var(--dark);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .profile::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(ellipse at 30% 50%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%);
-            z-index: 0;
-        }
-        
-        .profile-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .profile-avatar {
-            width: 150px;
-            height: 150px;
-            background: var(--gradient);
-            border-radius: 50%;
-            margin: 0 auto 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
-        }
-        
-        .profile h2 {
-            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .profile .title {
-            font-size: 1.25rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-        }
-        
-        .profile p {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
+            color: var(--primary);
             margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        
-        .profile-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .stat {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 900;
-            background: var(--gradient);
+
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; line-height: 1; margin-bottom: 2rem; }
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent), var(--primary), var(--secondary));
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+            color: transparent;
         }
-        
-        .stat-label {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            padding: 8rem 5%;
-            text-align: center;
-            position: relative;
-        }
-        
-        .cta-box {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 4rem;
-            border-radius: 32px;
-            box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: var(--gradient);
-        }
-        
-        .cta-box h2 {
-            font-size: 2.5rem;
+
+        .hero p { max-width: 600px; margin: 0 auto 3rem; color: var(--text-dim); font-size: 1.2rem; }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
             font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .cta-box p {
-            color: var(--gray);
-            font-size: 1.125rem;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--gray);
-        }
-        
-        .contact-item i {
-            color: var(--primary);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 5%;
-            text-align: center;
-        }
-        
-        footer p {
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
         }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -10px rgba(139, 92, 246, 0.6);
+            background: #7c3aed;
+        }
+
+        /* --- Sections --- */
+        section { padding: 8rem 0; }
+        .section-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 4rem; text-align: center; }
         
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .card i { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--accent); }
+        .card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .card p { color: var(--text-dim); }
+
+        /* --- Portfolio --- */
+        .portfolio-item {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+        }
+
+        /* --- Profile --- */
+        .profile-box {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 4rem;
+            border-radius: 32px;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center; justify-content: center;
+            font-size: 5rem;
+            flex-shrink: 0;
+            border: 4px solid var(--glass-border);
+        }
+
+        /* --- Footer/CTA --- */
+        .cta-section { text-align: center; background: linear-gradient(rgba(139, 92, 246, 0.1), transparent); border-radius: 40px; padding: 6rem 2rem; }
+        
+        footer { padding: 4rem 0; text-align: center; border-top: 1px solid var(--glass-border); color: var(--text-dim); font-size: 0.9rem; }
+
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            
-            nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1rem;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            }
-            
-            nav.active {
-                display: flex;
-            }
-            
-            .hero {
-                padding-top: 6rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .cta-section {
-                padding: 4rem 5%;
-            }
-            
-            .cta-box {
-                padding: 2rem;
-            }
+            .profile-box { flex-direction: column; text-align: center; padding: 2rem; }
+            .hero h1 { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-    
+    <div class="cyber-bg"><div class="cyber-grid"></div><div class="glow"></div></div>
+
     <header>
-        <div class="logo">
-            <i class="fas fa-rocket"></i>AI爆速開発
+        <div class="container nav-content">
+            <div class="logo"><i class="fas fa-bolt-lightning"></i> AI爆速開発</div>
+            <a href="mailto:diegobacigalupo8@gmail.com" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">相談する</a>
         </div>
-        <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
-            <i class="fas fa-bars"></i>
-        </div>
-        <nav>
-            <a href="#services">サービス</a>
-            <a href="#targets">対象業種</a>
-            <a href="#portfolio">実績</a>
-            <a href="#profile">プロフィール</a>
-            <a href="#contact" class="cta-button">お問い合わせ</a>
-        </nav>
     </header>
-    
-    <section class="hero">
-        <div class="floating floating-1"></div>
-        <div class="floating floating-2"></div>
-        <div class="floating floating-3"></div>
-        
-        <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-sparkles"></i> AI × 爆速開発
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-badge">Ushiku City, Ibaraki</div>
+                <h1>AIで<span class="gradient-text">爆速</span>の<br>未来を実装する</h1>
+                <p>14年の経験を持つエンジニアが、最新のAI技術を駆使してWeb開発、業務自動化、DX推進を圧倒的なスピードで実現します。</p>
+                <a href="#contact" class="btn btn-primary">プロジェクトを始める</a>
             </div>
-            <h1>
-                AIでビジネスの<br>
-                <span class="highlight">未来を加速させる</span>
-            </h1>
-            <p>
-                牛久市を中心に、AIを活用した爆速Web開発・業務自動化サービスを提供。
-                14年経験のエンジニアがあなたのビジネスをDXします。
-            </p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">
-                    <i class="fas fa-paper-plane"></i> 免费相談する
-                </a>
-                <a href="#portfolio" class="btn btn-secondary">
-                    <i class="fas fa-eye"></i> 実績を見る
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <section class="services" id="services">
-        <div class="section-header">
-            <h2>🎯 サービス</h2>
-            <p>AI技術を活用して、あなたのビジネス課題を効率的に解決します</p>
-        </div>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-globe"></i>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2 class="section-title">Services</h2>
+                <div class="grid">
+                    <div class="card">
+                        <i class="fas fa-code"></i>
+                        <h3>Webアプリ開発</h3>
+                        <p>AIによるコード生成をフル活用し、高品質なWebアプリを最短数日でプロトタイプ化します。</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-microchip"></i>
+                        <h3>業務自動化</h3>
+                        <p>ChatGPT等のAPIを既存業務に統合。毎日のルーチンワークを自動化し、生産性を最大化します。</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI活用コンサル</h3>
+                        <p>中小企業がAIをどう導入すべきか。14年の現場経験に基づき、実利のあるDXを提案します。</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-mobile-screen"></i>
+                        <h3>アプリ開発</h3>
+                        <p>iiba等のモバイルアプリ開発実績。アイデアからリリースまで、AIと共に駆け抜けます。</p>
+                    </div>
                 </div>
-                <h3>🌐 Webアプリ開発</h3>
-                <p>AIを活用した快速なWebアプリ開発。MVPから本格運用まで、圧倒的なスピードで。</p>
             </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-robot"></i>
+        </section>
+
+        <section id="portfolio">
+            <div class="container">
+                <h2 class="section-title">Portfolio</h2>
+                <div class="grid">
+                    <div class="portfolio-item">
+                        <div style="font-size: 5rem; color: var(--accent);"><i class="fas fa-baby"></i></div>
+                        <div class="portfolio-overlay">
+                            <h3>iiba</h3>
+                            <p>AI開発による次世代モバイルアプリ</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div style="font-size: 5rem; color: var(--secondary);"><i class="fas fa-book-open-reader"></i></div>
+                        <div class="portfolio-overlay">
+                            <a href="https://ehon-assistant.jp" target="_blank" style="color: white; text-decoration: none;">
+                                <h3>絵本アシスタント <i class="fas fa-external-link-alt" style="font-size: 1rem;"></i></h3>
+                                <p>AI絵本作成支援プラットフォーム</p>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <h3>⚡ 業務自動化</h3>
-                <p>毎日の繰り返し作業をAIで自動化。作業時間を大幅削減し、本質的な業務に集中。</p>
             </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-brain"></i>
+        </section>
+
+        <section id="profile">
+            <div class="container">
+                <div class="profile-box">
+                    <div class="profile-img">👨‍💻</div>
+                    <div>
+                        <h2 style="margin-bottom: 1rem;">Diego Alessandro</h2>
+                        <p style="color: var(--accent); font-weight: 700; margin-bottom: 1.5rem;">Freelance Engineer / AI Specialist</p>
+                        <p>IT業界14年。フルサイクル開発から泥臭い現場まで経験してきたからこそ、地に足の着いたAI活用が提案できます。茨城県牛久市を拠点に、地元の企業の「爆速」な成長を支えます。</p>
+                    </div>
                 </div>
-                <h3>🤖 AI活用支援</h3>
-                <p>ChatGPT・AIを組み合わせた業務効率化方案を提案。導入から運用までサポート。</p>
             </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h3>📱 アプリ開発</h3>
-                <p>iibaなどのAI開発実績あり。モバイルからWebまで、アイデアを形にします。</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="targets" id="targets">
-        <div class="section-header">
-            <h2>🏢 こんな企業様におすすめ</h2>
-            <p>茨城県牛久市・つくば市・龍ヶ崎市の皆様へ</p>
-        </div>
-        
-        <div class="targets-grid">
-            <div class="target-card">
-                <div class="target-icon">🦷</div>
-                <h3>医療機関・歯科医</h3>
-                <p>予約管理・患者さま対応のアナログ作業をDX</p>
-            </div>
-            
-            <div class="target-card">
-                <div class="target-icon">🍽️</div>
-                <h3>飲食店・美容院</h3>
-                <p>予約・在庫管理・顧客管理の自動化</p>
-            </div>
-            
-            <div class="target-card">
-                <div class="target-icon">🏪</div>
-                <h3>小売店・商店</h3>
-                <p>在庫管理・売上分析のデジタル化</p>
-            </div>
-            
-            <div class="target-card">
-                <div class="target-icon">🏢</div>
-                <h3>事務所・士業</h3>
-                <p>書類作業の自動化・ミスの削減</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="portfolio" id="portfolio">
-        <div class="section-header">
-            <h2>💼 実績</h2>
-            <p>AIをフル活用した開発実績をご紹介します</p>
-        </div>
-        
-        <div class="portfolio-grid">
-            <div class="portfolio-card">
-                <div class="portfolio-image">
-                    <i class="fas fa-mobile"></i>
-                </div>
-                <div class="portfolio-content">
-                    <span class="tag">モバイルアプリ</span>
-                    <h3>iiba</h3>
-                    <p>AI開発したモバイルアプリ。AIの力で用户体验を最適化。</p>
-                    <a href="#" class="portfolio-link">
-                        詳細を見る <i class="fas fa-arrow-right"></i>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="cta-section">
+                    <h2 style="font-size: 3rem; margin-bottom: 1rem;">Ready to Accelerate?</h2>
+                    <p style="margin-bottom: 3rem;">AIの導入、業務の自動化、新しいアイデアの形。何でもご相談ください。</p>
+                    <a href="mailto:diegobacigalupo8@gmail.com" class="btn btn-primary" style="font-size: 1.5rem;">
+                        <i class="fas fa-envelope"></i> 相談する（初回無料）
                     </a>
                 </div>
             </div>
-            
-            <div class="portfolio-card">
-                <div class="portfolio-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                    <i class="fas fa-book-open"></i>
-                </div>
-                <div class="portfolio-content">
-                    <span class="tag">Webサービス</span>
-                    <h3>絵本アシスタント</h3>
-                    <p>AIを活用した絵本作成支援サイト。<br><a href="https://ehon-assistant.jp" target="_blank">https://ehon-assistant.jp</a></p>
-                    <a href="https://ehon-assistant.jp" target="_blank" class="portfolio-link">
-                        サイトを見る <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="profile" id="profile">
-        <div class="profile-content">
-            <div class="profile-avatar">
-                <i class="fas fa-user"></i>
-            </div>
-            <h2>代表</h2>
-            <p class="title">フリーランスエンジニア | IT業界14年</p>
-            <p>
-                AIを活用した高速開発が得意です。
-                牛久市を中心に、茨城県の中小企業のDXをお手伝いしています。
-                「AIを導入したい」「業務を自動化したい」
-                というご要望があれば、まずはお気軽にご相談ください。
-            </p>
-            <div class="profile-stats">
-                <div class="stat">
-                    <div class="stat-number">14</div>
-                    <div class="stat-label">年経験</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">20+</div>
-                    <div class="stat-label">案件実績</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">AI活用</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="cta-section" id="contact">
-        <div class="cta-box">
-            <h2>📩 お問い合わせ</h2>
-            <p>AI開発、業務自動化のことなら何でもお問い合わせください。<br>初回の相談は無料でございます。</p>
-            <a href="mailto:contact@example.com" class="btn btn-primary">
-                <i class="fas fa-envelope"></i> お問い合わせする
-            </a>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    茨城県牛久市
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-clock"></i>
-                    対応時間: 9:00 - 20:00
-                </div>
-            </div>
-        </div>
-    </section>
-    
+        </section>
+    </main>
+
     <footer>
-        <p>&copy; 2026 AI爆速開発 | 牛久市 | All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2026 AI爆速開発 (Diego Alessandro). All Rights Reserved.</p>
+            <p style="margin-top: 1rem; opacity: 0.5; font-size: 0.7rem;">Design & Implementation Powered by Gemini 3 Flash</p>
+        </div>
     </footer>
-    
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
-    
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "AI爆速開発",
-        "description": "牛久市を中心にAIを活用した爆速Web開発・業務自動化サービス。14年経験のエンジニアがChatGPT・AIを組み合わせた業務効率化を提案。",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "牛久市",
-            "addressRegion": "茨城県",
-            "addressCountry": "JP"
-        },
-        "url": "https://diegoalessandro.github.io/ai-dev-ushiku/",
-        "priceRange": "¥¥",
-        "areaServed": {
-            "@type": "State",
-            "name": "茨城県"
-        },
-        "serviceType": ["Web開発", "AI開発", "業務自動化", "DX推進"],
-        "creator": {
-            "@type": "Person",
-            "jobTitle": "フリーランスエンジニア",
-            "knowsAbout": ["AI開発", "Web開発", "Python", "ChatGPT", "JavaScript"]
-        }
-    }
-    </script>
 </body>
 </html>
