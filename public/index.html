@@ -7,7 +7,7 @@
     <!-- SEO Meta Tags -->
     <title>AI爆速開発 | 牛久市 | Web開発・業務自動化・AI活用支援</title>
     <meta name="description" content="牛久市を中心にAIを活用した爆速Web開発・業務自動化サービスを提供。14年経験のエンジニアがChatGPT・AIを組み合わせた業務効率化を提案。iiba・絵本アシスタント実績あり。牛久市・つくば市・龍ヶ崎市の中小企業様向け。">
-    <meta name="keywords" content="AI開発, Web開発, 牛久市, 業務自動化, ChatGPT活用, フリーランス, エンジニア, 茨城県, AIアプリ開発, DX推進,  중소기업, 稲敷郡, つくば市, 龍ヶ崎市, Python, AI導入, 爆速開発">
+    <meta name="keywords" content="AI開発, Web開発, 牛久市, 業務自動化, ChatGPT活用, フリーランス, エンジニア, 茨城県, AIアプリ開発, DX推進, 中小企業, 稲敷郡, つくば市, 龍ヶ崎市, Python, AI導入, 爆速開発">
     <meta name="author" content="AI爆速開発">
     <meta name="robots" content="index, follow">
     <meta name="canonical" content="https://diegoalessandro.github.io/ai-dev-ushiku/">
@@ -23,6 +23,933 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI爆速開発 | 牛久市">
     <meta name="twitter:description" content="AIを活用した爆速Web開発・業務自動化サービス">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #f472b6;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 40%, rgba(244, 114, 182, 0.1) 0%, transparent 40%);
+            animation: bgMove 20s ease-in-out infinite;
+        }
+        
+        @keyframes bgMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(2%, 2%) rotate(1deg); }
+            66% { transform: translate(-1%, 1%) rotate(-1deg); }
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 0.75rem 5%;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .logo i {
+            -webkit-text-fill-color: var(--primary);
+            margin-right: 0.5rem;
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        nav a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+        
+        .hero h1 .highlight {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--dark);
+            border: 2px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Floating Elements */
+        .floating {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-1 {
+            top: 20%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 20px;
+            transform: rotate(15deg);
+        }
+        
+        .floating-2 {
+            top: 30%;
+            right: 10%;
+            width: 60px;
+            height: 60px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 50%;
+            animation-delay: -2s;
+        }
+        
+        .floating-3 {
+            bottom: 20%;
+            left: 15%;
+            width: 40px;
+            height: 40px;
+            background: rgba(244, 114, 182, 0.1);
+            border-radius: 10px;
+            animation-delay: -4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 6rem 5%;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        /* Target Section */
+        .targets {
+            padding: 6rem 5%;
+            background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.05) 100%);
+        }
+        
+        .targets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .target-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .target-card:hover {
+            border-color: var(--primary);
+            transform: scale(1.02);
+        }
+        
+        .target-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .target-card h3 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .target-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            padding: 6rem 5%;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .portfolio-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .portfolio-image {
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+        
+        .portfolio-content {
+            padding: 2rem;
+        }
+        
+        .portfolio-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-content .tag {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .portfolio-content p {
+            color: var(--gray);
+        }
+        
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: gap 0.3s ease;
+        }
+        
+        .portfolio-link:hover {
+            gap: 1rem;
+        }
+        
+        /* Profile Section */
+        .profile {
+            padding: 6rem 5%;
+            background: var(--dark);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 30% 50%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        .profile-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            background: var(--gradient);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+        }
+        
+        .profile h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .profile .title {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 5%;
+            text-align: center;
+            position: relative;
+        }
+        
+        .cta-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 4rem;
+            border-radius: 32px;
+            box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient);
+        }
+        
+        .cta-box h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-box p {
+            color: var(--gray);
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+        }
+        
+        .contact-item i {
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        
+        footer p {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            .hero {
+                padding-top: 6rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-section {
+                padding: 4rem 5%;
+            }
+            
+            .cta-box {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <header>
+        <div class="logo">
+            <i class="fas fa-rocket"></i>AI爆速開発
+        </div>
+        <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <a href="#services">サービス</a>
+            <a href="#targets">対象業種</a>
+            <a href="#portfolio">実績</a>
+            <a href="#profile">プロフィール</a>
+            <a href="#contact" class="cta-button">お問い合わせ</a>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="floating floating-1"></div>
+        <div class="floating floating-2"></div>
+        <div class="floating floating-3"></div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-sparkles"></i> AI × 爆速開発
+            </div>
+            <h1>
+                AIでビジネスの<br>
+                <span class="highlight">未来を加速させる</span>
+            </h1>
+            <p>
+                牛久市を中心に、AIを活用した爆速Web開発・業務自動化サービスを提供。
+                14年経験のエンジニアがあなたのビジネスをDXします。
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> 免费相談する
+                </a>
+                <a href="#portfolio" class="btn btn-secondary">
+                    <i class="fas fa-eye"></i> 実績を見る
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>🎯 サービス</h2>
+            <p>AI技術を活用して、あなたのビジネス課題を効率的に解決します</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>🌐 Webアプリ開発</h3>
+                <p>AIを活用した快速なWebアプリ開発。MVPから本格運用まで、圧倒的なスピードで。</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>⚡ 業務自動化</h3>
+                <p>毎日の繰り返し作業をAIで自動化。作業時間を大幅削減し、本質的な業務に集中。</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>🤖 AI活用支援</h3>
+                <p>ChatGPT・AIを組み合わせた業務効率化方案を提案。導入から運用までサポート。</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>📱 アプリ開発</h3>
+                <p>iibaなどのAI開発実績あり。モバイルからWebまで、アイデアを形にします。</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="targets" id="targets">
+        <div class="section-header">
+            <h2>🏢 こんな企業様におすすめ</h2>
+            <p>茨城県牛久市・つくば市・龍ヶ崎市の皆様へ</p>
+        </div>
+        
+        <div class="targets-grid">
+            <div class="target-card">
+                <div class="target-icon">🦷</div>
+                <h3>医療機関・歯科医</h3>
+                <p>予約管理・患者さま対応のアナログ作業をDX</p>
+            </div>
+            
+            <div class="target-card">
+                <div class="target-icon">🍽️</div>
+                <h3>飲食店・美容院</h3>
+                <p>予約・在庫管理・顧客管理の自動化</p>
+            </div>
+            
+            <div class="target-card">
+                <div class="target-icon">🏪</div>
+                <h3>小売店・商店</h3>
+                <p>在庫管理・売上分析のデジタル化</p>
+            </div>
+            
+            <div class="target-card">
+                <div class="target-icon">🏢</div>
+                <h3>事務所・士業</h3>
+                <p>書類作業の自動化・ミスの削減</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="portfolio" id="portfolio">
+        <div class="section-header">
+            <h2>💼 実績</h2>
+            <p>AIをフル活用した開発実績をご紹介します</p>
+        </div>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <div class="portfolio-image">
+                    <i class="fas fa-mobile"></i>
+                </div>
+                <div class="portfolio-content">
+                    <span class="tag">モバイルアプリ</span>
+                    <h3>iiba</h3>
+                    <p>AI開発したモバイルアプリ。AIの力で用户体验を最適化。</p>
+                    <a href="#" class="portfolio-link">
+                        詳細を見る <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="portfolio-card">
+                <div class="portfolio-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="portfolio-content">
+                    <span class="tag">Webサービス</span>
+                    <h3>絵本アシスタント</h3>
+                    <p>AIを活用した絵本作成支援サイト。<br><a href="https://ehon-assistant.jp" target="_blank">https://ehon-assistant.jp</a></p>
+                    <a href="https://ehon-assistant.jp" target="_blank" class="portfolio-link">
+                        サイトを見る <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="profile" id="profile">
+        <div class="profile-content">
+            <div class="profile-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h2>代表</h2>
+            <p class="title">フリーランスエンジニア | IT業界14年</p>
+            <p>
+                AIを活用した高速開発が得意です。
+                牛久市を中心に、茨城県の中小企業のDXをお手伝いしています。
+                「AIを導入したい」「業務を自動化したい」
+                というご要望があれば、まずはお気軽にご相談ください。
+            </p>
+            <div class="profile-stats">
+                <div class="stat">
+                    <div class="stat-number">14</div>
+                    <div class="stat-label">年経験</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">案件実績</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">AI活用</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section" id="contact">
+        <div class="cta-box">
+            <h2>📩 お問い合わせ</h2>
+            <p>AI開発、業務自動化のことなら何でもお問い合わせください。<br>初回の相談は無料でございます。</p>
+            <a href="mailto:contact@example.com" class="btn btn-primary">
+                <i class="fas fa-envelope"></i> お問い合わせする
+            </a>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    茨城県牛久市
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    対応時間: 9:00 - 20:00
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2026 AI爆速開発 | 牛久市 | All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
     
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -51,129 +978,5 @@
         }
     }
     </script>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; color: #333; }
-        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 80px 20px; text-align: center; }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 16px; }
-        .hero p { font-size: 1.2rem; opacity: 0.9; }
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        .section { margin-bottom: 48px; }
-        .section h2 { font-size: 1.8rem; margin-bottom: 20px; color: #667eea; }
-        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .service-card { background: #f8f9fa; padding: 24px; border-radius: 12px; text-align: center; }
-        .service-card h3 { margin-bottom: 12px; color: #333; }
-        .portfolio { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-        .portfolio-item { border: 1px solid #eee; border-radius: 12px; overflow: hidden; }
-        .portfolio-item img { width: 100%; height: 180px; object-fit: cover; background: #667eea; }
-        .portfolio-content { padding: 20px; }
-        .portfolio-content h3 { margin-bottom: 8px; }
-        .portfolio-content a { color: #667eea; text-decoration: none; }
-        .profile { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
-        .profile-img { width: 120px; height: 120px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; }
-        .profile-info { flex: 1; min-width: 250px; }
-        .cta { background: #f8f9fa; padding: 40px; border-radius: 12px; text-align: center; }
-        .cta h2 { margin-bottom: 16px; }
-        .cta a { display: inline-block; background: #667eea; color: white; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 16px; }
-        footer { background: #333; color: white; text-align: center; padding: 24px; margin-top: 40px; }
-    </style>
-</head>
-<body>
-    <section class="hero">
-        <h1>🚀 AI爆速開発</h1>
-        <p>茨城県牛久市 | AIを活用した爆速Web開発・業務自動化</p>
-    </section>
-
-    <div class="container">
-        <section class="section">
-            <h2>🎯 サービス</h2>
-            <div class="services">
-                <div class="service-card">
-                    <h3>🌐 Webアプリ開発</h3>
-                    <p>AIを活用した快速なWebアプリ開発。MVPから本格運用まで。</p>
-                </div>
-                <div class="service-card">
-                    <h3>⚡ 業務自動化</h3>
-                    <p>毎日の繰り返し作業をAIで自動化。作業時間を大幅削減。</p>
-                </div>
-                <div class="service-card">
-                    <h3>🤖 AI活用支援</h3>
-                    <p>ChatGPT・AIを組み合わせた業務効率化方案を提案。</p>
-                </div>
-                <div class="service-card">
-                    <h3>📱 アプリ開発</h3>
-                    <p>iibaなどのAI開発実績あり。モバイルからWebまで。</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>🏢 こんな企業様におすすめ</h2>
-            <div class="services">
-                <div class="service-card">
-                    <h3>🦷 医療機関・歯科医</h3>
-                    <p>予約管理・患者さま対応のアナログ作業をDX</p>
-                </div>
-                <div class="service-card">
-                    <h3>🍽️ 飲食店・美容院</h3>
-                    <p>予約・在庫管理・顾客管理の自動化</p>
-                </div>
-                <div class="service-card">
-                    <h3>🏪 小売店・商店</h3>
-                    <p>在庫管理・売上分析のデジタル化</p>
-                </div>
-                <div class="service-card">
-                    <h3>🏢 事務所・士業</h3>
-                    <p>書類作業の自動化・ミスの削減</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>💼 実績</h2>
-            <div class="portfolio">
-                <div class="portfolio-item">
-                    <div style="width:100%;height:180px;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;">📱</div>
-                    <div class="portfolio-content">
-                        <h3>iiba</h3>
-                        <p>AI開発したモバイルアプリ</p>
-                        <a href="#">詳細を見る</a>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div style="width:100%;height:180px;background:linear-gradient(135deg,#f093fb,#f5576c);display:flex;align-items:center;justify-content:center;color:white;font-size:3rem;">📚</div>
-                    <div class="portfolio-content">
-                        <h3>絵本アシスタント</h3>
-                        <p><a href="https://ehon-assistant.jp" target="_blank">https://ehon-assistant.jp</a></p>
-                        <p>AIを活用した絵本作成支援サイト</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>👤 プロフィール</h2>
-            <div class="profile">
-                <div class="profile-img">👨‍💻</div>
-                <div class="profile-info">
-                    <h3>代表</h3>
-                    <p>IT業界14年のベテランエンジニア</p>
-                    <p>AIを活用した高速開発が得意</p>
-                    <p>牛久市を中心に活動中</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section cta">
-            <h2>📩 お問い合わせ</h2>
-            <p>AI開発、业务自動化のことなら何でもお問い合わせください。</p>
-            <p>初回の相談は無料でございます。</p>
-            <a href="mailto:contact@example.com">お問い合わせする</a>
-        </section>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 AI爆速開発 | 牛久市</p>
-    </footer>
 </body>
 </html>
