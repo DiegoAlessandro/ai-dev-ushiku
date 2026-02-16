@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Static landing page for "AI活用相談 牛久" — a freelance AI development service targeting local businesses in Ushiku/Tsukuba, Ibaraki, Japan. Domain: `ai-dev-ushiku.jp`
+Static landing page for "AI活用相談 牛久" — a freelance AI development service targeting local businesses in Ushiku/Tsukuba, Ibaraki, Japan. Domain: `ushiku-ai.jp`
 
 ## Architecture
 
