@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8P2TZ0MQWB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8P2TZ0MQWB');
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNS投稿文AI生成デモ | AI活用相談 牛久</title>
+    <meta name="description" content="AIがSNS投稿文を自動生成。料理名を入力するだけで、Instagram向けの魅力的な投稿文が完成します。">
+    <link rel="canonical" href="https://ushiku-ai.jp/demo/sns.html">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #2563A0;
+            --primary-light: #3B82C4;
+            --primary-pale: #EBF4FA;
+            --accent: #E8793A;
+            --accent-light: #FFF3EB;
+            --bg: #FAFAF8;
+            --bg-white: #FFFFFF;
+            --text: #1F2937;
+            --text-sub: #6B7280;
+            --border: #E5E7EB;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* --- Layout --- */
+        .container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* --- Header --- */
+        header {
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-content {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .logo i { color: var(--accent); }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .back-link:hover { color: var(--primary); }
+
+        /* --- Hero --- */
+        .hero {
+            text-align: center;
+            padding: 3rem 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.3rem 1rem;
+            border-radius: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            color: var(--text-sub);
+            font-size: 1rem;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* --- Form Card --- */
+        .form-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group label .required {
+            color: var(--accent);
+            font-size: 0.8rem;
+            margin-left: 0.3rem;
+        }
+
+        .form-group label .optional {
+            color: var(--text-sub);
+            font-size: 0.8rem;
+            font-weight: 400;
+            margin-left: 0.3rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1rem;
+            color: var(--text);
+            background: var(--bg);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-pale);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .char-counter {
+            text-align: right;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            margin-top: 0.3rem;
+        }
+
+        .char-counter.over-limit {
+            color: #DC2626;
+            font-weight: 700;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
+        }
+
+        .generate-btn:hover {
+            background: #D06B2F;
+        }
+
+        .generate-btn:active {
+            transform: scale(0.98);
+        }
+
+        .generate-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* --- Loading --- */
+        .loading-area {
+            display: none;
+            text-align: center;
+            padding: 2.5rem 1rem;
+        }
+
+        .loading-area.visible {
+            display: block;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-area p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* --- Output Card (Instagram style) --- */
+        .output-area {
+            display: none;
+            margin-bottom: 2rem;
+        }
+
+        .output-area.visible {
+            display: block;
+        }
+
+        .instagram-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .instagram-header {
+            height: 4px;
+            background: linear-gradient(90deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+        }
+
+        .instagram-body {
+            padding: 1.5rem 2rem;
+        }
+
+        .instagram-body .preview-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .instagram-body .preview-label i {
+            color: #DD2A7B;
+        }
+
+        .post-text {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: var(--text);
+            min-height: 60px;
+            padding: 1rem;
+            background: var(--bg);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .output-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            justify-content: flex-end;
+        }
+
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-light);
+        }
+
+        .copy-btn.copied {
+            background: #16A34A;
+        }
+
+        /* --- Toast --- */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #DC2626;
+            color: #fff;
+            padding: 0.85rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            z-index: 200;
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .toast.visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 1rem;
+        }
+
+        .powered-by {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            margin-bottom: 0.5rem;
+        }
+
+        .powered-by i {
+            color: var(--primary);
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero { padding: 2rem 0 1.5rem; }
+            .hero h1 { font-size: 1.4rem; }
+            .form-card { padding: 1.5rem; }
+            .instagram-body { padding: 1.25rem 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.25rem; }
+            .hero p { font-size: 0.9rem; }
+            .form-card { padding: 1.25rem; }
+            .instagram-body { padding: 1rem 1.25rem; }
+            .generate-btn { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-content">
+            <a href="/" class="logo">
+                <i class="fa-solid fa-microchip"></i>AI活用相談 牛久
+            </a>
+            <a href="/" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>LPに戻る
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <main>
+        <section class="hero">
+            <div class="container">
+                <span class="hero-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> 無料デモ体験</span>
+                <h1>SNS投稿文をAIが自動生成</h1>
+                <p>料理名を入力するだけで、Instagram向けの魅力的な投稿文をAIが作成します</p>
+            </div>
+        </section>
+
+        <!-- Form -->
+        <section class="container">
+            <div class="form-card">
+                <form id="snsForm" novalidate>
+                    <div class="form-group">
+                        <label for="productName">
+                            <i class="fa-solid fa-utensils"></i> 料理名
+                            <span class="required">必須</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="productName"
+                            name="productName"
+                            required
+                            maxlength="100"
+                            value="今日のランチ：地元野菜のパスタ"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">
+                            <i class="fa-solid fa-comment-dots"></i> 補足説明
+                            <span class="optional">任意</span>
+                        </label>
+                        <textarea
+                            id="description"
+                            name="description"
+                            maxlength="500"
+                            placeholder="例：自家製トマトソース、つくば産バジル使用"
+                        ></textarea>
+                        <div class="char-counter" id="charCounter">0 / 500</div>
+                    </div>
+
+                    <button type="submit" class="generate-btn" id="generateBtn">
+                        <i class="fa-solid fa-paper-plane"></i> 投稿文を生成 →
+                    </button>
+                </form>
+            </div>
+
+            <!-- Loading -->
+            <div class="loading-area" id="loadingArea">
+                <div class="spinner"></div>
+                <p>AIが投稿文を作成しています...</p>
+            </div>
+
+            <!-- Output -->
+            <div class="output-area" id="outputArea">
+                <div class="instagram-card">
+                    <div class="instagram-header"></div>
+                    <div class="instagram-body">
+                        <div class="preview-label">
+                            <i class="fa-brands fa-instagram"></i>
+                            投稿プレビュー
+                        </div>
+                        <div class="post-text" id="postText"></div>
+                        <div class="output-actions">
+                            <button type="button" class="copy-btn" id="copyBtn">
+                                <i class="fa-regular fa-copy"></i>
+                                <span id="copyBtnText">コピーする</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="powered-by">
+                <i class="fa-solid fa-sparkles"></i>
+                Powered by Gemini
+            </div>
+            <p class="copyright">&copy; 2026 AI活用相談 牛久</p>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // DOM elements
+            var form = document.getElementById('snsForm');
+            var generateBtn = document.getElementById('generateBtn');
+            var productNameInput = document.getElementById('productName');
+            var descriptionInput = document.getElementById('description');
+            var charCounter = document.getElementById('charCounter');
+            var loadingArea = document.getElementById('loadingArea');
+            var outputArea = document.getElementById('outputArea');
+            var postText = document.getElementById('postText');
+            var copyBtn = document.getElementById('copyBtn');
+            var copyBtnText = document.getElementById('copyBtnText');
+            var toast = document.getElementById('toast');
+
+            var THROTTLE_MS = 3000;
+            var MAX_CHARS = 500;
+            var API_ENDPOINT = '/api/sns';
+            var throttleTimer = null;
+
+            // Character counter
+            descriptionInput.addEventListener('input', function() {
+                var len = descriptionInput.value.length;
+                charCounter.textContent = len + ' / ' + MAX_CHARS;
+
+                if (len > MAX_CHARS) {
+                    charCounter.classList.add('over-limit');
+                } else {
+                    charCounter.classList.remove('over-limit');
+                }
+            });
+
+            // Toast notification
+            function showToast(message) {
+                toast.textContent = message;
+                toast.classList.add('visible');
+
+                setTimeout(function() {
+                    toast.classList.remove('visible');
+                }, 3500);
+            }
+
+            // Throttle: disable button for THROTTLE_MS
+            function throttleButton() {
+                generateBtn.disabled = true;
+
+                if (throttleTimer) {
+                    clearTimeout(throttleTimer);
+                }
+
+                throttleTimer = setTimeout(function() {
+                    generateBtn.disabled = false;
+                    throttleTimer = null;
+                }, THROTTLE_MS);
+            }
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                var productName = productNameInput.value.trim();
+
+                if (!productName) {
+                    showToast('料理名を入力してください');
+                    productNameInput.focus();
+                    return;
+                }
+
+                if (descriptionInput.value.length > MAX_CHARS) {
+                    showToast('補足説明は' + MAX_CHARS + '文字以内で入力してください');
+                    descriptionInput.focus();
+                    return;
+                }
+
+                // Throttle
+                throttleButton();
+
+                // Show loading, hide output
+                loadingArea.classList.add('visible');
+                outputArea.classList.remove('visible');
+
+                // Build request body
+                var body = { productName: productName };
+                var description = descriptionInput.value.trim();
+                if (description) {
+                    body.description = description;
+                }
+
+                // API call
+                fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                })
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw new Error('サーバーエラーが発生しました（' + response.status + '）');
+                    }
+                    return response.json();
+                })
+                .then(function(data) {
+                    loadingArea.classList.remove('visible');
+
+                    if (!data || !data.post) {
+                        throw new Error('投稿文の生成に失敗しました');
+                    }
+
+                    // Use textContent to prevent XSS
+                    postText.textContent = data.post;
+
+                    // Reset copy button state
+                    copyBtnText.textContent = 'コピーする';
+                    copyBtn.classList.remove('copied');
+
+                    outputArea.classList.add('visible');
+
+                    // Scroll to output
+                    outputArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                })
+                .catch(function(err) {
+                    loadingArea.classList.remove('visible');
+                    showToast(err.message || '通信エラーが発生しました。もう一度お試しください。');
+                });
+            });
+
+            // Copy to clipboard
+            copyBtn.addEventListener('click', function() {
+                var text = postText.textContent;
+
+                if (!text) return;
+
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(function() {
+                        copyBtnText.textContent = 'コピーしました！';
+                        copyBtn.classList.add('copied');
+
+                        setTimeout(function() {
+                            copyBtnText.textContent = 'コピーする';
+                            copyBtn.classList.remove('copied');
+                        }, 2000);
+                    }).catch(function() {
+                        fallbackCopy(text);
+                    });
+                } else {
+                    fallbackCopy(text);
+                }
+            });
+
+            // Fallback copy for older browsers
+            function fallbackCopy(text) {
+                var textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                textarea.style.left = '-9999px';
+                document.body.appendChild(textarea);
+                textarea.select();
+
+                try {
+                    document.execCommand('copy');
+                    copyBtnText.textContent = 'コピーしました！';
+                    copyBtn.classList.add('copied');
+
+                    setTimeout(function() {
+                        copyBtnText.textContent = 'コピーする';
+                        copyBtn.classList.remove('copied');
+                    }, 2000);
+                } catch (err) {
+                    showToast('コピーに失敗しました');
+                }
+
+                document.body.removeChild(textarea);
+            }
+        })();
+    </script>
+</body>
+</html>

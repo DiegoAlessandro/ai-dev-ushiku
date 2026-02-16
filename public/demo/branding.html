@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8P2TZ0MQWB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8P2TZ0MQWB');
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品ブランディングAIコピーライター | AI活用相談 牛久</title>
+    <meta name="description" content="AIが商品の魅力を引き出すブランディング文を自動生成。商品名・カテゴリ・特徴を入力するだけで、プロ品質のコピーが完成します。">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #2563A0;
+            --primary-light: #3B82C4;
+            --primary-pale: #EBF4FA;
+            --accent: #E8793A;
+            --accent-light: #FFF3EB;
+            --bg: #FAFAF8;
+            --bg-white: #FFFFFF;
+            --text: #1F2937;
+            --text-sub: #6B7280;
+            --border: #E5E7EB;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* --- Layout --- */
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* --- Header --- */
+        header {
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .logo i { color: var(--accent); }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-decoration: none;
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover { color: var(--primary); }
+
+        /* --- Hero --- */
+        .demo-hero {
+            padding: 3rem 0 2rem;
+            text-align: center;
+            background: var(--bg-white);
+        }
+
+        .demo-hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1.25rem;
+            background: var(--accent-light);
+            border: 1px solid var(--accent);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .demo-hero h1 {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 0.75rem;
+        }
+
+        .demo-hero p {
+            color: var(--text-sub);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- Main Content --- */
+        .demo-main {
+            flex: 1;
+            padding: 2.5rem 0 3rem;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        /* --- Card --- */
+        .card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-title i { color: var(--primary); }
+
+        /* --- Form --- */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            color: var(--text);
+        }
+
+        .form-group label .required {
+            color: var(--accent);
+            font-size: 0.75rem;
+            margin-left: 0.3rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text);
+            background: var(--bg-white);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            line-height: 1.6;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 160, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .char-counter {
+            text-align: right;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            margin-top: 0.3rem;
+        }
+
+        .char-counter.over-limit {
+            color: #DC2626;
+            font-weight: 700;
+        }
+
+        /* --- Button --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(232, 121, 58, 0.3);
+        }
+
+        .btn-accent:hover {
+            background: #D06A2E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(232, 121, 58, 0.4);
+        }
+
+        .btn-accent:disabled {
+            background: #CCC;
+            box-shadow: none;
+            transform: none;
+            cursor: not-allowed;
+        }
+
+        .btn-full { width: 100%; }
+
+        .btn-copy {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: inherit;
+            background: var(--primary-pale);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-copy:hover {
+            background: var(--primary);
+            color: #FFFFFF;
+        }
+
+        /* --- Output --- */
+        .output-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border);
+        }
+
+        .output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .output-placeholder {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-sub);
+        }
+
+        .output-placeholder i {
+            font-size: 2.5rem;
+            color: var(--border);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .output-text {
+            white-space: pre-wrap;
+            line-height: 2;
+            font-size: 0.95rem;
+            color: var(--text);
+            padding: 1.5rem;
+            background: var(--bg);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            min-height: 200px;
+        }
+
+        .output-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+
+        /* --- Loading --- */
+        .loading-area {
+            display: none;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .loading-area.active {
+            display: block;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        /* --- Toast --- */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.3s ease;
+            max-width: 90vw;
+        }
+
+        .toast.visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast-success {
+            background: #16A34A;
+            color: #FFFFFF;
+        }
+
+        .toast-error {
+            background: #DC2626;
+            color: #FFFFFF;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 1.5rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            background: var(--bg-white);
+        }
+
+        .footer-powered {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-copyright {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .demo-hero {
+                padding: 2rem 0 1.5rem;
+            }
+
+            .demo-main {
+                padding: 1.5rem 0 2rem;
+            }
+
+            .card,
+            .output-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card,
+            .output-card {
+                padding: 1.25rem;
+            }
+
+            .output-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="nav-content" aria-label="デモページナビゲーション">
+                <a href="/" class="logo">
+                    <i class="fa-solid fa-microchip"></i>
+                    AI活用相談 牛久
+                </a>
+                <a href="/" class="back-link">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    LPに戻る
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="demo-hero" aria-labelledby="demo-heading">
+        <div class="container">
+            <span class="demo-hero-badge"><i class="fa-solid fa-flask"></i> AIデモ体験</span>
+            <h1 id="demo-heading">商品ブランディング AIコピーライター</h1>
+            <p>商品の情報を入力するだけで、AIが魅力的なブランディング文を自動生成します。</p>
+        </div>
+    </section>
+
+    <!-- Main -->
+    <main class="demo-main">
+        <div class="container">
+            <div class="demo-grid">
+
+                <!-- Input Form Card -->
+                <div class="card">
+                    <h2 class="card-title"><i class="fa-solid fa-pen-nib"></i> 商品情報を入力</h2>
+                    <form id="brandingForm" novalidate>
+                        <div class="form-group">
+                            <label for="productName">
+                                商品名<span class="required">*必須</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="productName"
+                                class="form-input"
+                                required
+                                maxlength="100"
+                                placeholder="例: 牛久シャトー 赤ワイン 2024"
+                                value="牛久シャトー 赤ワイン 2024"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">カテゴリ</label>
+                            <select id="category" class="form-select">
+                                <option value="食品・飲料" selected>食品・飲料</option>
+                                <option value="農産物">農産物</option>
+                                <option value="工芸品">工芸品</option>
+                                <option value="化粧品・美容">化粧品・美容</option>
+                                <option value="アパレル">アパレル</option>
+                                <option value="その他">その他</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="features">
+                                特徴・こだわり<span class="required">*必須</span>
+                            </label>
+                            <textarea
+                                id="features"
+                                class="form-textarea"
+                                required
+                                maxlength="500"
+                                placeholder="例: 自社畑で育てたぶどう使用、無添加、手作り..."
+                            >牛久シャトーの自社畑で育てたメルロー種を使用。樽熟成12ヶ月。フルーティーで飲みやすい。</textarea>
+                            <div class="char-counter" id="charCounter">
+                                <span id="charCount">0</span> / 500文字
+                            </div>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="btn btn-accent btn-full">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            商品説明を生成
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Output Card -->
+                <div class="output-card">
+                    <div class="output-header">
+                        <h2 class="card-title"><i class="fa-solid fa-sparkles"></i> 生成結果</h2>
+                        <button type="button" id="copyBtn" class="btn-copy" style="display: none;">
+                            <i class="fa-regular fa-copy"></i>
+                            コピーする
+                        </button>
+                    </div>
+
+                    <!-- Placeholder -->
+                    <div id="outputPlaceholder" class="output-placeholder">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                        <p>左のフォームから商品情報を入力し、<br>「商品説明を生成」をクリックしてください。</p>
+                    </div>
+
+                    <!-- Loading -->
+                    <div id="loadingArea" class="loading-area">
+                        <div class="spinner"></div>
+                        <p class="loading-text">AIがブランディング文を作成しています...</p>
+                    </div>
+
+                    <!-- Result -->
+                    <div id="outputResult" style="display: none;">
+                        <div id="outputText" class="output-text"></div>
+                        <div class="output-actions">
+                            <button type="button" id="copyBtn2" class="btn-copy">
+                                <i class="fa-regular fa-copy"></i>
+                                コピーする
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-powered">
+                <i class="fa-solid fa-robot"></i>
+                Powered by Gemini
+            </div>
+            <p class="footer-copyright">&copy; 2026 AI活用相談 牛久</p>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // --- DOM Elements ---
+            var form = document.getElementById('brandingForm');
+            var productNameInput = document.getElementById('productName');
+            var categorySelect = document.getElementById('category');
+            var featuresTextarea = document.getElementById('features');
+            var charCount = document.getElementById('charCount');
+            var charCounter = document.getElementById('charCounter');
+            var submitBtn = document.getElementById('submitBtn');
+            var outputPlaceholder = document.getElementById('outputPlaceholder');
+            var loadingArea = document.getElementById('loadingArea');
+            var outputResult = document.getElementById('outputResult');
+            var outputText = document.getElementById('outputText');
+            var copyBtn = document.getElementById('copyBtn');
+            var copyBtn2 = document.getElementById('copyBtn2');
+            var toast = document.getElementById('toast');
+
+            var CHAR_LIMIT = 500;
+            var THROTTLE_MS = 3000;
+            var isThrottled = false;
+
+            // --- Character Counter ---
+            function updateCharCount() {
+                var totalLength = productNameInput.value.length + featuresTextarea.value.length;
+                charCount.textContent = totalLength;
+
+                if (totalLength > CHAR_LIMIT) {
+                    charCounter.classList.add('over-limit');
+                } else {
+                    charCounter.classList.remove('over-limit');
+                }
+            }
+
+            productNameInput.addEventListener('input', updateCharCount);
+            featuresTextarea.addEventListener('input', updateCharCount);
+
+            // 初期値カウント
+            updateCharCount();
+
+            // --- Toast ---
+            function showToast(message, type) {
+                toast.textContent = message;
+                toast.className = 'toast toast-' + type;
+
+                // 表示
+                requestAnimationFrame(function() {
+                    toast.classList.add('visible');
+                });
+
+                setTimeout(function() {
+                    toast.classList.remove('visible');
+                }, 3000);
+            }
+
+            // --- Copy to Clipboard ---
+            function copyToClipboard() {
+                var text = outputText.textContent;
+                if (!text) return;
+
+                navigator.clipboard.writeText(text).then(function() {
+                    showToast('コピーしました！', 'success');
+                }).catch(function() {
+                    showToast('コピーに失敗しました', 'error');
+                });
+            }
+
+            copyBtn.addEventListener('click', copyToClipboard);
+            copyBtn2.addEventListener('click', copyToClipboard);
+
+            // --- UI State ---
+            function showLoading() {
+                outputPlaceholder.style.display = 'none';
+                loadingArea.classList.add('active');
+                outputResult.style.display = 'none';
+                copyBtn.style.display = 'none';
+            }
+
+            function showResult(text) {
+                loadingArea.classList.remove('active');
+                outputResult.style.display = 'block';
+                outputText.textContent = text;
+                copyBtn.style.display = 'inline-flex';
+            }
+
+            function showError(message) {
+                loadingArea.classList.remove('active');
+                outputPlaceholder.style.display = 'block';
+                outputResult.style.display = 'none';
+                copyBtn.style.display = 'none';
+                showToast(message, 'error');
+            }
+
+            // --- Form Submit ---
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Validation
+                var productName = productNameInput.value.trim();
+                var category = categorySelect.value;
+                var features = featuresTextarea.value.trim();
+
+                if (!productName) {
+                    showToast('商品名を入力してください', 'error');
+                    productNameInput.focus();
+                    return;
+                }
+
+                if (!features) {
+                    showToast('特徴・こだわりを入力してください', 'error');
+                    featuresTextarea.focus();
+                    return;
+                }
+
+                var totalLength = productName.length + features.length;
+                if (totalLength > CHAR_LIMIT) {
+                    showToast('入力文字数が' + CHAR_LIMIT + '文字を超えています', 'error');
+                    return;
+                }
+
+                // Throttle
+                if (isThrottled) {
+                    showToast('少々お待ちください...', 'error');
+                    return;
+                }
+
+                isThrottled = true;
+                submitBtn.disabled = true;
+
+                setTimeout(function() {
+                    isThrottled = false;
+                    submitBtn.disabled = false;
+                }, THROTTLE_MS);
+
+                // Show loading
+                showLoading();
+
+                // API Call
+                fetch('/api/branding', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        productName: productName,
+                        category: category,
+                        features: features
+                    })
+                })
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw new Error('サーバーエラーが発生しました（' + response.status + '）');
+                    }
+                    return response.json();
+                })
+                .then(function(data) {
+                    if (data && data.copy) {
+                        showResult(data.copy);
+                    } else {
+                        throw new Error('AIからの応答が不正です');
+                    }
+                })
+                .catch(function(error) {
+                    showError(error.message || '通信エラーが発生しました。もう一度お試しください。');
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

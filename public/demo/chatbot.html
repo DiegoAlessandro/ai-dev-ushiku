@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8P2TZ0MQWB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8P2TZ0MQWB');
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIチャットボット デモ | さくら歯科クリニック | AI活用相談 牛久</title>
+    <meta name="description" content="歯科クリニック向けAIチャットボットのデモページ。予約確認・メニュー案内・アクセス情報を自動応答するAIの実例をご体験ください。">
+    <link rel="canonical" href="https://ushiku-ai.jp/demo/chatbot.html">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- OGP -->
+    <meta property="og:title" content="AIチャットボット デモ | さくら歯科クリニック">
+    <meta property="og:description" content="歯科クリニック向けAIチャットボットのデモ。予約確認・メニュー案内をAIが自動応答します。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ushiku-ai.jp/demo/chatbot.html">
+    <meta property="og:site_name" content="AI活用相談 牛久">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- CSS Custom Properties --- */
+        :root {
+            --primary: #2563A0;
+            --primary-light: #3B82C4;
+            --primary-pale: #EBF4FA;
+            --accent: #E8793A;
+            --accent-light: #FFF3EB;
+            --bg: #FAFAF8;
+            --bg-white: #FFFFFF;
+            --text: #1F2937;
+            --text-sub: #6B7280;
+            --border: #E5E7EB;
+        }
+
+        /* --- Reset --- */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- Reduced Motion --- */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* --- Base --- */
+        html {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        /* --- Header --- */
+        .header {
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-logo i {
+            font-size: 1.1rem;
+        }
+
+        .header-back {
+            font-size: 0.85rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .header-back:hover {
+            background-color: var(--primary-pale);
+        }
+
+        /* --- Chat Container --- */
+        .chat-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            background-color: var(--bg-white);
+            border-left: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+        }
+
+        /* --- Demo Banner --- */
+        .demo-banner {
+            background-color: var(--primary-pale);
+            color: var(--primary);
+            text-align: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .demo-banner i {
+            margin-right: 0.3rem;
+        }
+
+        /* --- Clinic Header --- */
+        .clinic-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background-color: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .clinic-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .clinic-info {
+            flex: 1;
+        }
+
+        .clinic-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.3;
+        }
+
+        .clinic-status {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: #16A34A;
+            display: inline-block;
+        }
+
+        /* --- Messages Area --- */
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            background-color: var(--bg);
+            scroll-behavior: smooth;
+        }
+
+        /* --- Message Bubbles --- */
+        .message-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.5rem;
+            max-width: 85%;
+            animation: messageIn 0.3s ease-out;
+        }
+
+        @keyframes messageIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-row.ai {
+            align-self: flex-start;
+        }
+
+        .message-row.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+            align-self: flex-end;
+        }
+
+        .message-row.ai .message-avatar {
+            background-color: var(--primary);
+            color: #fff;
+        }
+
+        .message-row.user .message-avatar {
+            background-color: var(--accent);
+            color: #fff;
+        }
+
+        .message-bubble {
+            padding: 0.7rem 1rem;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+
+        .message-row.ai .message-bubble {
+            background-color: var(--bg-white);
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-bottom-left-radius: 4px;
+        }
+
+        .message-row.user .message-bubble {
+            background-color: var(--accent);
+            color: #fff;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message-time {
+            font-size: 0.65rem;
+            color: var(--text-sub);
+            margin-top: 0.25rem;
+            padding: 0 0.25rem;
+        }
+
+        .message-row.user .message-time {
+            text-align: right;
+        }
+
+        /* --- Typing Indicator --- */
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            max-width: 85%;
+            align-self: flex-start;
+            animation: messageIn 0.3s ease-out;
+        }
+
+        .typing-indicator .message-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .typing-dots {
+            background-color: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            border-bottom-left-radius: 4px;
+            padding: 0.7rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .typing-dots span {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--text-sub);
+            animation: typingBounce 1.4s infinite;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingBounce {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+            30% {
+                transform: translateY(-6px);
+                opacity: 1;
+            }
+        }
+
+        /* --- Quick Replies --- */
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background-color: var(--bg);
+            border-top: 1px solid var(--border);
+        }
+
+        .quick-reply-btn {
+            padding: 0.45rem 0.9rem;
+            border: 1.5px solid var(--primary);
+            background-color: var(--bg-white);
+            color: var(--primary);
+            font-size: 0.82rem;
+            font-weight: 500;
+            font-family: 'Noto Sans JP', sans-serif;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .quick-reply-btn:hover {
+            background-color: var(--primary);
+            color: #fff;
+        }
+
+        .quick-reply-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* --- Input Area --- */
+        .input-area {
+            padding: 0.75rem 1rem;
+            background-color: var(--bg-white);
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .input-field {
+            flex: 1;
+            padding: 0.6rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 24px;
+            font-size: 0.9rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            outline: none;
+            transition: border-color 0.2s;
+            line-height: 1.4;
+        }
+
+        .input-field:focus {
+            border-color: var(--primary);
+        }
+
+        .input-field::placeholder {
+            color: var(--text-sub);
+        }
+
+        .send-btn {
+            width: 42px;
+            height: 42px;
+            border: none;
+            background-color: var(--primary);
+            color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: background-color 0.2s, transform 0.1s;
+            flex-shrink: 0;
+        }
+
+        .send-btn:hover:not(:disabled) {
+            background-color: var(--primary-light);
+        }
+
+        .send-btn:active:not(:disabled) {
+            transform: scale(0.95);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* --- Powered By --- */
+        .powered-by {
+            text-align: center;
+            padding: 0.4rem 1rem;
+            font-size: 0.7rem;
+            color: var(--text-sub);
+            background-color: var(--bg-white);
+            border-top: 1px solid var(--border);
+        }
+
+        .powered-by img {
+            height: 14px;
+            vertical-align: middle;
+            margin-left: 0.2rem;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            background-color: var(--bg-white);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Error Toast --- */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background-color: #DC2626;
+            color: #fff;
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 600px) {
+            .chat-wrapper {
+                border-left: none;
+                border-right: none;
+            }
+
+            .message-row {
+                max-width: 90%;
+            }
+        }
+
+        @media (min-width: 601px) {
+            .chat-wrapper {
+                margin-top: 0;
+                border-radius: 0;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            }
+        }
+
+        /* --- Height Management --- */
+        .chat-wrapper {
+            height: calc(100vh - 49px); /* header height */
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="header-logo">
+                <i class="fa-solid fa-robot"></i>
+                AI活用相談 牛久
+            </a>
+            <a href="/" class="header-back">
+                <i class="fa-solid fa-arrow-left"></i>
+                LPに戻る
+            </a>
+        </div>
+    </header>
+
+    <!-- Chat Container -->
+    <div class="chat-wrapper">
+        <!-- Demo Banner -->
+        <div class="demo-banner">
+            <i class="fa-solid fa-flask"></i>
+            デモ体験 - さくら歯科クリニック（架空）のAIチャットボット
+        </div>
+
+        <!-- Clinic Header -->
+        <div class="clinic-header">
+            <div class="clinic-avatar">
+                <i class="fa-solid fa-tooth"></i>
+            </div>
+            <div class="clinic-info">
+                <div class="clinic-name">さくら歯科クリニック</div>
+                <div class="clinic-status">
+                    <span class="status-dot"></span>
+                    AI応対中
+                </div>
+            </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="messages" id="messages" role="log" aria-label="チャット履歴" aria-live="polite">
+            <!-- Messages will be inserted here by JS -->
+        </div>
+
+        <!-- Quick Replies -->
+        <div class="quick-replies" id="quickReplies">
+            <button class="quick-reply-btn" type="button" data-message="空き状況を教えてください">空き状況</button>
+            <button class="quick-reply-btn" type="button" data-message="メニューと料金を教えてください">メニュー・料金</button>
+            <button class="quick-reply-btn" type="button" data-message="アクセス方法を教えてください">アクセス</button>
+            <button class="quick-reply-btn" type="button" data-message="初診の流れを教えてください">初診の流れ</button>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <input
+                type="text"
+                class="input-field"
+                id="messageInput"
+                placeholder="メッセージを入力..."
+                aria-label="メッセージ入力"
+                autocomplete="off"
+                maxlength="500"
+            >
+            <button class="send-btn" id="sendBtn" type="button" aria-label="送信">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+
+        <!-- Powered By -->
+        <div class="powered-by">
+            Powered by Gemini
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            &copy; 2026 <a href="/">AI活用相談 牛久</a>
+        </div>
+    </div>
+
+    <!-- Error Toast -->
+    <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+
+    <script>
+        'use strict';
+
+        // --- State ---
+        /** @type {Array<{role: string, text: string}>} */
+        const conversationHistory = [];
+        let isSending = false;
+        let throttleTimer = null;
+
+        // --- DOM References ---
+        const messagesEl = document.getElementById('messages');
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const quickRepliesEl = document.getElementById('quickReplies');
+        const toastEl = document.getElementById('toast');
+
+        // --- API Config ---
+        const API_ENDPOINT = '/api/chat';
+        const MAX_HISTORY_ITEMS = 10; // 5 turns = 10 messages (user + ai)
+
+        // --- Utility: Get current time string ---
+        /**
+         * @returns {string} HH:MM format time string
+         */
+        function getCurrentTime() {
+            const now = new Date();
+            return now.getHours().toString().padStart(2, '0') + ':' +
+                   now.getMinutes().toString().padStart(2, '0');
+        }
+
+        // --- Utility: Scroll to bottom ---
+        function scrollToBottom() {
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        // --- Toast Notification ---
+        /** @type {number|null} */
+        let toastTimer = null;
+
+        /**
+         * @param {string} message - Error message to display
+         */
+        function showToast(message) {
+            // Set text safely via textContent
+            toastEl.textContent = message;
+            toastEl.classList.add('show');
+
+            if (toastTimer) {
+                clearTimeout(toastTimer);
+            }
+
+            toastTimer = setTimeout(function() {
+                toastEl.classList.remove('show');
+                toastTimer = null;
+            }, 5000);
+        }
+
+        // --- Add Message to UI ---
+        /**
+         * @param {'ai' | 'user'} role
+         * @param {string} text
+         */
+        function addMessage(role, text) {
+            const row = document.createElement('div');
+            row.className = 'message-row ' + role;
+
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+
+            if (role === 'ai') {
+                const icon = document.createElement('i');
+                icon.className = 'fa-solid fa-tooth';
+                avatar.appendChild(icon);
+            } else {
+                const icon = document.createElement('i');
+                icon.className = 'fa-solid fa-user';
+                avatar.appendChild(icon);
+            }
+
+            const contentWrap = document.createElement('div');
+
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            // SECURITY: Use textContent to prevent XSS
+            bubble.textContent = text;
+
+            const time = document.createElement('div');
+            time.className = 'message-time';
+            time.textContent = getCurrentTime();
+
+            contentWrap.appendChild(bubble);
+            contentWrap.appendChild(time);
+
+            row.appendChild(avatar);
+            row.appendChild(contentWrap);
+
+            messagesEl.appendChild(row);
+            scrollToBottom();
+        }
+
+        // --- Typing Indicator ---
+        /**
+         * @returns {HTMLElement} The typing indicator element
+         */
+        function showTypingIndicator() {
+            const indicator = document.createElement('div');
+            indicator.className = 'typing-indicator';
+            indicator.id = 'typingIndicator';
+
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            const icon = document.createElement('i');
+            icon.className = 'fa-solid fa-tooth';
+            avatar.appendChild(icon);
+
+            const dots = document.createElement('div');
+            dots.className = 'typing-dots';
+            // Static trusted HTML only - no user content
+            dots.innerHTML = '<span></span><span></span><span></span>';
+
+            indicator.appendChild(avatar);
+            indicator.appendChild(dots);
+
+            messagesEl.appendChild(indicator);
+            scrollToBottom();
+            return indicator;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        // --- Throttle Control ---
+        function disableSending() {
+            isSending = true;
+            sendBtn.disabled = true;
+            messageInput.disabled = true;
+
+            // Disable quick reply buttons
+            const quickBtns = quickRepliesEl.querySelectorAll('.quick-reply-btn');
+            quickBtns.forEach(function(btn) {
+                btn.disabled = true;
+            });
+        }
+
+        function enableSending() {
+            isSending = false;
+            sendBtn.disabled = false;
+            messageInput.disabled = false;
+            messageInput.focus();
+
+            // Enable quick reply buttons
+            const quickBtns = quickRepliesEl.querySelectorAll('.quick-reply-btn');
+            quickBtns.forEach(function(btn) {
+                btn.disabled = false;
+            });
+        }
+
+        /**
+         * Start a 3-second throttle after sending
+         */
+        function startThrottle() {
+            disableSending();
+
+            if (throttleTimer) {
+                clearTimeout(throttleTimer);
+            }
+
+            throttleTimer = setTimeout(function() {
+                enableSending();
+                throttleTimer = null;
+            }, 3000);
+        }
+
+        // --- Send Message ---
+        /**
+         * @param {string} messageText
+         */
+        async function sendMessage(messageText) {
+            const trimmed = messageText.trim();
+            if (!trimmed || isSending) {
+                return;
+            }
+
+            // Add user message to UI
+            addMessage('user', trimmed);
+
+            // Add to conversation history
+            conversationHistory.push({ role: 'user', text: trimmed });
+
+            // Clear input
+            messageInput.value = '';
+
+            // Disable sending + start throttle
+            disableSending();
+
+            // Show typing indicator
+            showTypingIndicator();
+
+            try {
+                // Prepare history (last 10 items = 5 turns)
+                const historyToSend = conversationHistory.slice(-MAX_HISTORY_ITEMS);
+
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: trimmed,
+                        history: historyToSend,
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('サーバーエラーが発生しました（' + response.status + '）');
+                }
+
+                const data = await response.json();
+                const aiText = data.reply || data.message || 'すみません、応答を取得できませんでした。';
+
+                // Remove typing indicator
+                removeTypingIndicator();
+
+                // Add AI message to UI
+                addMessage('ai', aiText);
+
+                // Add to conversation history
+                conversationHistory.push({ role: 'ai', text: aiText });
+
+            } catch (error) {
+                removeTypingIndicator();
+
+                /** @type {string} */
+                let errorMessage;
+                if (error instanceof TypeError && error.message === 'Failed to fetch') {
+                    errorMessage = 'ネットワークエラーが発生しました。接続を確認してください。';
+                } else if (error instanceof Error) {
+                    errorMessage = error.message;
+                } else {
+                    errorMessage = '予期しないエラーが発生しました。';
+                }
+
+                showToast(errorMessage);
+
+                // Add fallback AI message
+                addMessage('ai', '申し訳ございません。一時的にエラーが発生しました。しばらくしてから再度お試しください。');
+
+                // Add error response to history so context is maintained
+                conversationHistory.push({
+                    role: 'ai',
+                    text: '申し訳ございません。一時的にエラーが発生しました。しばらくしてから再度お試しください。',
+                });
+            } finally {
+                // Start 3-second throttle
+                startThrottle();
+            }
+        }
+
+        // --- Event Listeners ---
+
+        // Send button click
+        sendBtn.addEventListener('click', function() {
+            sendMessage(messageInput.value);
+        });
+
+        // Enter key
+        messageInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.isComposing) {
+                e.preventDefault();
+                sendMessage(messageInput.value);
+            }
+        });
+
+        // Quick reply buttons (event delegation)
+        quickRepliesEl.addEventListener('click', function(e) {
+            const btn = e.target.closest('.quick-reply-btn');
+            if (btn && !btn.disabled) {
+                const message = btn.getAttribute('data-message');
+                if (message) {
+                    sendMessage(message);
+                }
+            }
+        });
+
+        // --- Initial Greeting ---
+        (function init() {
+            const greetingText = 'さくら歯科クリニックへようこそ！\nご予約やメニューについて、お気軽にお聞きください。\n\n（※これはAIデモです）';
+            addMessage('ai', greetingText);
+
+            // Add greeting to history
+            conversationHistory.push({ role: 'ai', text: greetingText });
+        })();
+    </script>
+</body>
+</html>
