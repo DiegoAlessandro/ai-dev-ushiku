@@ -15,6 +15,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>商品ブランディングAIコピーライター | AI活用相談 牛久</title>
     <meta name="description" content="AIが商品の魅力を引き出すブランディング文を自動生成。商品名・カテゴリ・特徴を入力するだけで、プロ品質のコピーが完成します。">
+    <link rel="canonical" href="https://ushiku-ai.jp/demo/branding.html">
+
+    <!-- OGP -->
+    <meta property="og:title" content="商品ブランディングAIコピーライター | AI活用相談 牛久">
+    <meta property="og:description" content="AIが商品の魅力を引き出すブランディング文を自動生成。商品名・カテゴリ・特徴を入力するだけで、プロ品質のコピーが完成します。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ushiku-ai.jp/demo/branding.html">
+    <meta property="og:site_name" content="AI活用相談 牛久">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:image" content="https://ushiku-ai.jp/ogp.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="商品ブランディングAIコピーライター | AI活用相談 牛久">
+    <meta name="twitter:description" content="AIが商品の魅力を引き出すブランディング文を自動生成。">
+    <meta name="twitter:image" content="https://ushiku-ai.jp/ogp.png">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "商品ブランディングAIコピーライター",
+        "description": "AIが商品の魅力を引き出すブランディング文を自動生成するデモツール",
+        "url": "https://ushiku-ai.jp/demo/branding.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+        "provider": {
+            "@type": "ProfessionalService",
+            "name": "AI活用相談 牛久",
+            "url": "https://ushiku-ai.jp/"
+        }
+    }
+    </script>
+
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -622,6 +658,9 @@
             var THROTTLE_MS = 3000;
             var isThrottled = false;
 
+            // GA4: demo_start
+            gtag('event', 'demo_start', { demo_type: 'branding' });
+
             // --- Character Counter ---
             function updateCharCount() {
                 var totalLength = productNameInput.value.length + featuresTextarea.value.length;
@@ -661,6 +700,7 @@
                 if (!text) return;
 
                 navigator.clipboard.writeText(text).then(function() {
+                    gtag('event', 'demo_copy', { demo_type: 'branding' });
                     showToast('コピーしました！', 'success');
                 }).catch(function() {
                     showToast('コピーに失敗しました', 'error');
@@ -737,6 +777,9 @@
                 // Show loading
                 showLoading();
 
+                // GA4: demo_submit
+                gtag('event', 'demo_submit', { demo_type: 'branding' });
+
                 // API Call
                 fetch('/api/branding', {
                     method: 'POST',
@@ -758,11 +801,13 @@
                 .then(function(data) {
                     if (data && data.copy) {
                         showResult(data.copy);
+                        gtag('event', 'demo_result', { demo_type: 'branding', success: true });
                     } else {
                         throw new Error('AIからの応答が不正です');
                     }
                 })
                 .catch(function(error) {
+                    gtag('event', 'demo_result', { demo_type: 'branding', success: false });
                     showError(error.message || '通信エラーが発生しました。もう一度お試しください。');
                 });
             });

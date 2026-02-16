@@ -17,6 +17,40 @@
     <meta name="description" content="AIがSNS投稿文を自動生成。料理名を入力するだけで、Instagram向けの魅力的な投稿文が完成します。">
     <link rel="canonical" href="https://ushiku-ai.jp/demo/sns.html">
 
+    <!-- OGP -->
+    <meta property="og:title" content="SNS投稿文AI生成デモ | AI活用相談 牛久">
+    <meta property="og:description" content="AIがSNS投稿文を自動生成。料理名を入力するだけで、Instagram向けの魅力的な投稿文が完成します。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ushiku-ai.jp/demo/sns.html">
+    <meta property="og:site_name" content="AI活用相談 牛久">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:image" content="https://ushiku-ai.jp/ogp.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SNS投稿文AI生成デモ | AI活用相談 牛久">
+    <meta name="twitter:description" content="AIがSNS投稿文を自動生成。料理名を入力するだけで、Instagram向けの投稿文が完成。">
+    <meta name="twitter:image" content="https://ushiku-ai.jp/ogp.png">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "SNS投稿文AI生成デモ",
+        "description": "料理名を入力するだけでInstagram向けの魅力的な投稿文をAIが自動生成するデモツール",
+        "url": "https://ushiku-ai.jp/demo/sns.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+        "provider": {
+            "@type": "ProfessionalService",
+            "name": "AI活用相談 牛久",
+            "url": "https://ushiku-ai.jp/"
+        }
+    }
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
@@ -548,6 +582,9 @@
             var API_ENDPOINT = '/api/sns';
             var throttleTimer = null;
 
+            // GA4: demo_start
+            gtag('event', 'demo_start', { demo_type: 'sns' });
+
             // Character counter
             descriptionInput.addEventListener('input', function() {
                 var len = descriptionInput.value.length;
@@ -605,6 +642,9 @@
                 // Throttle
                 throttleButton();
 
+                // GA4: demo_submit
+                gtag('event', 'demo_submit', { demo_type: 'sns' });
+
                 // Show loading, hide output
                 loadingArea.classList.add('visible');
                 outputArea.classList.remove('visible');
@@ -646,10 +686,14 @@
 
                     outputArea.classList.add('visible');
 
+                    // GA4: demo_result success
+                    gtag('event', 'demo_result', { demo_type: 'sns', success: true });
+
                     // Scroll to output
                     outputArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 })
                 .catch(function(err) {
+                    gtag('event', 'demo_result', { demo_type: 'sns', success: false });
                     loadingArea.classList.remove('visible');
                     showToast(err.message || '通信エラーが発生しました。もう一度お試しください。');
                 });
@@ -663,6 +707,7 @@
 
                 if (navigator.clipboard && navigator.clipboard.writeText) {
                     navigator.clipboard.writeText(text).then(function() {
+                        gtag('event', 'demo_copy', { demo_type: 'sns' });
                         copyBtnText.textContent = 'コピーしました！';
                         copyBtn.classList.add('copied');
 

@@ -17,6 +17,40 @@
     <meta name="description" content="現場メモをAIが自動で清書。建設業向けAI日報作成デモをお試しください。">
     <link rel="canonical" href="https://ushiku-ai.jp/demo/report.html">
 
+    <!-- OGP -->
+    <meta property="og:title" content="建設日報AI清書デモ | AI活用相談 牛久">
+    <meta property="og:description" content="現場メモをAIが自動で清書。建設業向けAI日報作成デモをお試しください。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ushiku-ai.jp/demo/report.html">
+    <meta property="og:site_name" content="AI活用相談 牛久">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:image" content="https://ushiku-ai.jp/ogp.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="建設日報AI清書デモ | AI活用相談 牛久">
+    <meta name="twitter:description" content="現場メモをAIが自動で清書。建設業向けAI日報作成デモをお試しください。">
+    <meta name="twitter:image" content="https://ushiku-ai.jp/ogp.png">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "建設日報AI清書デモ",
+        "description": "現場メモをAIがプロ品質の業務報告書に自動変換するデモツール",
+        "url": "https://ushiku-ai.jp/demo/report.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+        "provider": {
+            "@type": "ProfessionalService",
+            "name": "AI活用相談 牛久",
+            "url": "https://ushiku-ai.jp/"
+        }
+    }
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
@@ -649,6 +683,9 @@
             textareaEl.addEventListener('input', updateCharCount);
             updateCharCount();
 
+            // GA4: demo_start
+            gtag('event', 'demo_start', { demo_type: 'report' });
+
             // ---- Toast ----
             function showToast(message) {
                 if (toastTimer) {
@@ -714,6 +751,9 @@
                 startThrottle();
                 showLoading();
 
+                // GA4: demo_submit
+                gtag('event', 'demo_submit', { demo_type: 'report' });
+
                 fetch(API_ENDPOINT, {
                     method: 'POST',
                     headers: {
@@ -730,11 +770,13 @@
                 .then(function (data) {
                     if (data && data.cleanReport) {
                         showResult(data.cleanReport);
+                        gtag('event', 'demo_result', { demo_type: 'report', success: true });
                     } else {
                         throw new Error('レスポンス形式が不正です。');
                     }
                 })
                 .catch(function (err) {
+                    gtag('event', 'demo_result', { demo_type: 'report', success: false });
                     showPlaceholder();
                     showToast(err.message || '通信エラーが発生しました。しばらくしてからお試しください。');
                 });

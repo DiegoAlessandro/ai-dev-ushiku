@@ -29,6 +29,32 @@
     <meta property="og:url" content="https://ushiku-ai.jp/demo/chatbot.html">
     <meta property="og:site_name" content="AI活用相談 牛久">
     <meta property="og:locale" content="ja_JP">
+    <meta property="og:image" content="https://ushiku-ai.jp/ogp.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AIチャットボット デモ | AI活用相談 牛久">
+    <meta name="twitter:description" content="歯科クリニック向けAIチャットボットのデモ。予約確認・メニュー案内をAIが自動応答します。">
+    <meta name="twitter:image" content="https://ushiku-ai.jp/ogp.png">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "AIチャットボット デモ",
+        "description": "歯科クリニック向けAIチャットボットのデモ。予約確認・メニュー案内をAIが自動応答します。",
+        "url": "https://ushiku-ai.jp/demo/chatbot.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+        "provider": {
+            "@type": "ProfessionalService",
+            "name": "AI活用相談 牛久",
+            "url": "https://ushiku-ai.jp/"
+        }
+    }
+    </script>
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -830,6 +856,9 @@
             // Clear input
             messageInput.value = '';
 
+            // GA4: demo_submit
+            gtag('event', 'demo_submit', { demo_type: 'chatbot' });
+
             // Disable sending + start throttle
             disableSending();
 
@@ -861,6 +890,9 @@
                 // Remove typing indicator
                 removeTypingIndicator();
 
+                // GA4: demo_result success
+                gtag('event', 'demo_result', { demo_type: 'chatbot', success: true });
+
                 // Add AI message to UI
                 addMessage('ai', aiText);
 
@@ -879,6 +911,9 @@
                 } else {
                     errorMessage = '予期しないエラーが発生しました。';
                 }
+
+                // GA4: demo_result failure
+                gtag('event', 'demo_result', { demo_type: 'chatbot', success: false });
 
                 showToast(errorMessage);
 
@@ -921,6 +956,9 @@
                 }
             }
         });
+
+        // GA4: demo_start
+        gtag('event', 'demo_start', { demo_type: 'chatbot' });
 
         // --- Initial Greeting ---
         (function init() {
