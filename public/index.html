@@ -3,335 +3,1004 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
-    <title>AI爆速開発 | 牛久市 | 茨城のDX・業務自動化パートナー</title>
-    <meta name="description" content="茨城県牛久市を拠点に、AIを活用した爆速Web開発・業務自動化サービスを提供。14年のエンジニア経験を活かし、中小企業のDXを最短距離で実現します。iiba・絵本アシスタント実績あり。">
-    <meta name="keywords" content="AI開発, Web開発, 牛久市, 業務自動化, ChatGPT活用, フリーランス, エンジニア, 茨城県, AIアプリ開発, DX推進, 中小企業, つくば市, 龍ヶ崎市, 爆速開発">
-    
+    <title>AI活用相談 牛久 | 茨城の中小企業向けAI導入・業務効率化</title>
+    <meta name="description" content="茨城県牛久市のAI活用相談窓口。中小企業の業務効率化・自動化をAIで支援。14年のIT経験を持つ地元エンジニアが、無料相談から導入・サポートまで伴走します。">
+    <meta name="keywords" content="AI活用 牛久, AI導入 茨城, 業務効率化 中小企業, AI相談 つくば, 業務自動化, ホームページ制作 牛久, IT相談 茨城県, DX支援 土浦, AI開発 龍ケ崎">
+    <link rel="canonical" href="https://ai-dev-ushiku.jp/">
+
+    <!-- OGP -->
+    <meta property="og:title" content="AI活用相談 牛久 | 中小企業の業務効率化をAIで支援">
+    <meta property="og:description" content="茨城県牛久市を拠点に、中小企業のAI導入・業務効率化を支援。14年のIT経験を持つ地元エンジニアが伴走します。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ai-dev-ushiku.jp/">
+    <meta property="og:site_name" content="AI活用相談 牛久">
+    <meta property="og:locale" content="ja_JP">
+    <!-- <meta property="og:image" content="https://ai-dev-ushiku.jp/ogp.png"> -->
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI活用相談 牛久 | 中小企業の業務効率化をAIで支援">
+    <meta name="twitter:description" content="茨城県牛久市を拠点に、中小企業のAI導入・業務効率化を支援。14年のIT経験を持つ地元エンジニアが伴走します。">
+    <!-- <meta name="twitter:image" content="https://ai-dev-ushiku.jp/ogp.png"> -->
+
+    <!-- JSON-LD 構造化データ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "AI活用相談 牛久",
+        "description": "茨城県牛久市を拠点に、中小企業のAI導入・業務効率化を支援するITサービス",
+        "url": "https://ai-dev-ushiku.jp/",
+        "telephone": "",
+        "email": "diegobacigalupo8@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "牛久市",
+            "addressRegion": "茨城県",
+            "addressCountry": "JP"
+        },
+        "areaServed": [
+            { "@type": "City", "name": "牛久市" },
+            { "@type": "City", "name": "つくば市" },
+            { "@type": "City", "name": "土浦市" },
+            { "@type": "City", "name": "龍ケ崎市" }
+        ],
+        "founder": {
+            "@type": "Person",
+            "name": "Diego Alessandro"
+        },
+        "knowsAbout": [
+            "AI導入支援",
+            "業務自動化",
+            "Webアプリケーション開発",
+            "AIチャットボット",
+            "データ分析"
+        ],
+        "openingHours": "Mo-Fr 09:00-18:00",
+        "priceRange": "$$"
+    }
+    </script>
+
     <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <style>
         :root {
-            --bg: #030712;
-            --card-bg: rgba(17, 24, 39, 0.7);
-            --primary: #8b5cf6;
-            --secondary: #ec4899;
-            --accent: #06b6d4;
-            --text: #f3f4f6;
-            --text-dim: #9ca3af;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --success: #10b981;
+            --primary: #2563A0;
+            --primary-light: #3B82C4;
+            --primary-pale: #EBF4FA;
+            --accent: #E8793A;
+            --accent-light: #FFF3EB;
+            --bg: #FAFAF8;
+            --bg-white: #FFFFFF;
+            --bg-section: #F3F4F1;
+            --text: #1F2937;
+            --text-sub: #6B7280;
+            --success: #16A34A;
+            --border: #E5E7EB;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: 'Noto Sans JP', sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
-        /* --- Gemini Design: Dynamic Cyber Background --- */
-        .cyber-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #030712 100%);
-        }
-
-        .cyber-grid {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
-            background-image: 
-                linear-gradient(var(--glass-border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
-            background-size: 50px 50px;
-            transform: perspective(500px) rotateX(60deg);
-            animation: grid-move 20s linear infinite;
-            opacity: 0.2;
-        }
-
-        @keyframes grid-move {
-            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
-            100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
-        }
-
-        .glow {
-            position: absolute;
-            width: 40vw;
-            height: 40vw;
-            background: var(--primary);
-            filter: blur(15vw);
-            border-radius: 50%;
-            opacity: 0.15;
-            top: 10%;
-            right: -10%;
-            animation: pulse 8s ease-in-out infinite alternate;
-        }
-
-        @keyframes pulse {
-            from { transform: scale(1); opacity: 0.1; }
-            to { transform: scale(1.2); opacity: 0.2; }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
 
         /* --- Layout --- */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-        
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* --- Header --- */
         header {
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
         }
 
-        .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: white; }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
         .logo i { color: var(--accent); }
 
-        .hero { padding: 8rem 0 6rem; text-align: center; }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(232, 121, 58, 0.3);
+        }
+
+        .btn-accent:hover {
+            background: #D06A2E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(232, 121, 58, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-pale);
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1.25rem;
+            font-size: 0.85rem;
+            border-radius: 6px;
+        }
+
+        /* --- Hero --- */
+        .hero {
+            padding: 5rem 0 4rem;
+            text-align: center;
+            background: var(--bg-white);
+        }
+
         .hero-badge {
             display: inline-block;
-            padding: 0.4rem 1rem;
-            background: rgba(139, 92, 246, 0.2);
+            padding: 0.4rem 1.25rem;
+            background: var(--primary-pale);
             border: 1px solid var(--primary);
             border-radius: 100px;
             font-size: 0.8rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
         }
 
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 2rem; }
-        .gradient-text {
-            background: linear-gradient(90deg, var(--accent), var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero p { max-width: 700px; margin: 0 auto 3.5rem; color: var(--text-dim); font-size: 1.25rem; font-weight: 500; }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 1.25rem 3rem;
-            border-radius: 14px;
+        .hero h1 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
             font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            border: none;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary);
+        }
+
+        .hero p {
+            max-width: 620px;
+            margin: 0 auto 2.5rem;
+            color: var(--text-sub);
             font-size: 1.1rem;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.5);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 30px -10px rgba(139, 92, 246, 0.6);
-            background: #7c3aed;
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* --- Sections --- */
-        section { padding: 6rem 0; }
-        .section-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 1.5rem; text-align: center; }
-        .section-subtitle { text-align: center; color: var(--text-dim); margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            padding: 2.5rem;
-            border-radius: 24px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
+        section { padding: 5rem 0; }
 
-        .card:hover { 
-            transform: translateY(-10px); 
-            border-color: var(--primary); 
-            box-shadow: 0 20px 40px -20px rgba(139, 92, 246, 0.3);
-        }
-        .card i { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--accent); }
-        .card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-        .card p { color: var(--text-dim); }
-
-        /* --- Local Benefit List --- */
-        .benefit-list {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-        .benefit-list li {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+        .section-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
             color: var(--text);
-            margin-bottom: 0.75rem;
-            font-size: 0.95rem;
-        }
-        .benefit-list i {
-            color: var(--success);
-            font-size: 1rem;
-            margin-bottom: 0;
         }
 
-        /* --- Portfolio --- */
-        .portfolio-item {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            aspect-ratio: 16/9;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: border-color 0.3s ease;
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-sub);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1rem;
         }
-        .portfolio-item:hover { border-color: var(--accent); }
-        .portfolio-overlay {
-            position: absolute;
-            bottom: 0; left: 0; width: 100%;
-            padding: 2rem;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+
+        .bg-alt { background: var(--bg-section); }
+        .bg-white { background: var(--bg-white); }
+
+        /* --- Worry / Pain Points --- */
+        .worry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.25rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .worry-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--bg-white);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .worry-item i {
+            color: var(--accent);
+            font-size: 1.25rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .worry-item p {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.6;
         }
 
         /* --- Profile --- */
         .profile-box {
             display: flex;
             align-items: center;
-            gap: 4rem;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            padding: 4rem;
-            border-radius: 32px;
+            gap: 3rem;
+            background: var(--bg-white);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .profile-avatar {
+            width: 140px;
+            height: 140px;
+            background: var(--primary-pale);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .profile-avatar i {
+            font-size: 3.5rem;
+            color: var(--primary);
+        }
+
+        .profile-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-info .role {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-info .motto {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .profile-info .bio {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-badges {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary-pale);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .badge i { font-size: 1rem; }
+
+        /* --- Services --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-pale);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-icon i {
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .service-card > p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-list {
+            list-style: none;
+        }
+
+        .benefit-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .benefit-list i {
+            color: var(--success);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        /* --- Pricing Comparison --- */
+        .pricing-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .pricing-card.company {
+            background: var(--bg-section);
+            opacity: 0.85;
+        }
+
+        .pricing-card.ours {
+            background: var(--bg-white);
+            border-color: var(--accent);
+            box-shadow: 0 4px 16px rgba(232, 121, 58, 0.12);
             position: relative;
+        }
+
+        .pricing-label {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .pricing-card.company .pricing-label {
+            background: var(--border);
+            color: var(--text-sub);
+        }
+
+        .pricing-card.ours .pricing-label {
+            background: var(--accent);
+            color: #FFFFFF;
+        }
+
+        .pricing-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-row:last-child { border-bottom: none; }
+
+        .pricing-row .service-name {
+            font-size: 0.9rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .pricing-row .price {
+            font-weight: 700;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .pricing-card.company .price {
+            color: var(--text-sub);
+            text-decoration: line-through;
+            text-decoration-color: rgba(107, 114, 128, 0.4);
+        }
+
+        .pricing-card.ours .price {
+            color: var(--accent);
+        }
+
+        .pricing-reason {
+            max-width: 820px;
+            margin: 2rem auto 0;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .reason-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        .reason-item i {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .pricing-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        @media (max-width: 480px) {
+            .pricing-compare {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- Process / Flow --- */
+        .process-flow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0 auto 1rem;
+        }
+
+        .step-number.free {
+            background: var(--accent);
+        }
+
+        .process-step h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .process-step p {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
+        .step-arrow {
+            display: none;
+        }
+
+        /* Arrow between steps on desktop */
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 24px;
+            right: -0.75rem;
+            width: calc(1.5rem);
+            height: 2px;
+            background: var(--border);
+        }
+
+        /* --- Portfolio --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .portfolio-header {
+            padding: 2rem;
+            background: var(--primary-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-header i {
+            font-size: 3rem;
+            color: var(--primary);
+        }
+
+        .portfolio-body {
+            padding: 1.5rem 2rem;
+        }
+
+        .portfolio-body h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-body .desc {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.75rem;
+        }
+
+        .portfolio-tag {
+            padding: 0.2rem 0.6rem;
+            background: var(--primary-pale);
+            color: var(--primary);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .portfolio-result {
+            font-size: 0.85rem;
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .portfolio-result i { margin-right: 0.25rem; }
+
+        /* --- FAQ --- */
+        .faq-list {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 0.75rem;
+            background: var(--bg-white);
             overflow: hidden;
         }
 
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
+        .faq-item summary {
+            padding: 1.25rem 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
             display: flex;
-            align-items: center; justify-content: center;
-            font-size: 4.5rem;
+            align-items: center;
+            gap: 0.75rem;
+            list-style: none;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .faq-item summary::-webkit-details-marker { display: none; }
+
+        .faq-item summary::before {
+            content: 'Q';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            color: #FFFFFF;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 700;
             flex-shrink: 0;
-            border: 4px solid var(--glass-border);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        /* --- FAQ --- */
-        .faq { max-width: 800px; margin: 0 auto; }
-        .faq-item {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
+        .faq-item summary::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            margin-left: auto;
+            transition: transform 0.2s ease;
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.25rem 4rem;
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* --- CTA --- */
+        .cta-section {
+            text-align: center;
+            background: var(--primary);
             border-radius: 16px;
-            padding: 1.5rem;
+            padding: 4rem 2rem;
+            color: #FFFFFF;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
             margin-bottom: 1rem;
+            font-weight: 700;
+            color: #FFFFFF;
         }
-        .faq-q { font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); display: flex; gap: 0.5rem; }
-        .faq-a { color: var(--text-dim); font-size: 0.95rem; }
 
-        /* --- Footer/CTA --- */
-        .cta-section { 
-            text-align: center; 
-            background: linear-gradient(rgba(139, 92, 246, 0.15), transparent); 
-            border-radius: 40px; 
-            padding: 6rem 2rem;
-            border: 1px solid var(--glass-border);
+        .cta-section p {
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            opacity: 0.9;
         }
-        
-        footer { padding: 4rem 0; text-align: center; border-top: 1px solid var(--glass-border); color: var(--text-dim); font-size: 0.9rem; }
 
+        .cta-section .btn-accent {
+            font-size: 1.15rem;
+            padding: 1rem 2.5rem;
+            background: #FFFFFF;
+            color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-section .btn-accent:hover {
+            background: #F0F0F0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-note {
+            margin-top: 1.25rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-sub);
+            font-size: 0.85rem;
+            background: var(--bg-white);
+        }
+
+        footer .footer-sub {
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            opacity: 0.6;
+        }
+
+        /* --- Responsive: 1024px --- */
+        @media (max-width: 1024px) {
+            .process-flow {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .process-step:nth-child(2)::after {
+                display: none;
+            }
+        }
+
+        /* --- Responsive: 768px --- */
         @media (max-width: 768px) {
-            .profile-box { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; gap: 2rem; }
-            .hero h1 { font-size: 2.8rem; }
-            .profile-img { width: 140px; height: 140px; font-size: 3.5rem; }
-            section { padding: 4rem 0; }
+            .nav-links { display: none; }
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-white);
+                border-bottom: 1px solid var(--border);
+                padding: 1rem 1.5rem;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            }
+            .hamburger { display: block; }
+
+            .profile-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1.5rem;
+                gap: 1.5rem;
+            }
+            .profile-badges { justify-content: center; }
+
+            .process-flow {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            .process-step::after { display: none !important; }
+
+            section { padding: 3.5rem 0; }
+            .hero { padding: 3rem 0 2.5rem; }
+        }
+
+        /* --- Responsive: 480px --- */
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.6rem; }
+            .hero p { font-size: 1rem; }
+            .btn { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+            .worry-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .profile-avatar { width: 110px; height: 110px; }
+            .profile-avatar i { font-size: 2.75rem; }
         }
     </style>
 </head>
 <body>
-    <div class="cyber-bg"><div class="cyber-grid"></div><div class="glow"></div></div>
 
     <header>
         <div class="container nav-content">
-            <a href="#" class="logo"><i class="fas fa-bolt-lightning"></i> AI爆速開発</a>
-            <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem; border-radius: 10px;">無料相談はこちら</a>
+            <a href="#" class="logo"><i class="fas fa-lightbulb"></i> AI活用相談 牛久</a>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#worries">お悩み</a></li>
+                    <li><a href="#profile">プロフィール</a></li>
+                    <li><a href="#services">サービス</a></li>
+                    <li><a href="#pricing">料金</a></li>
+                    <li><a href="#portfolio">実績</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact" class="btn btn-accent btn-sm">無料相談</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
     <main>
-        <section class="hero">
+        <!-- Hero -->
+        <section class="hero" aria-labelledby="hero-heading">
             <div class="container">
                 <div class="hero-badge">茨城県牛久市・つくば市・土浦市 対応</div>
-                <h1>地元のビジネスに、<br><span class="gradient-text">AIの加速力</span>を。</h1>
+                <h1 id="hero-heading">地元のビジネスに、<br><span class="highlight">AIという頼れる相棒</span>を。</h1>
                 <p>
                     「AIって難しそう」「何から始めればいいかわからない」<br>
-                    そんな牛久の中小企業様へ。14年の開発経験を持つエンジニアが、<br>
-                    あなたの現場に最適なAI活用を「爆速」で実装します。
+                    そんな牛久の中小企業様へ。14年の開発経験を持つ地元エンジニアが、<br>
+                    あなたの現場に最適なAI活用をご提案します。
                 </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="#contact" class="btn btn-primary">
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-accent">
                         <i class="fas fa-comments"></i> 30分の無料相談を予約する
                     </a>
-                    <a href="#services" class="btn" style="background: var(--glass); border: 1px solid var(--glass-border); color: white;">
+                    <a href="#services" class="btn btn-outline">
                         解決できる課題を見る
                     </a>
                 </div>
             </div>
         </section>
 
-        <section id="services">
+        <!-- Worries / Pain Points -->
+        <section id="worries" class="bg-alt" aria-labelledby="worries-heading">
             <div class="container">
-                <h2 class="section-title">中小企業のためのAI活用メニュー</h2>
+                <h2 class="section-title" id="worries-heading">こんなお悩み、ありませんか？</h2>
+                <p class="section-subtitle">一つでも当てはまる方は、ぜひ一度ご相談ください。</p>
+                <div class="worry-grid">
+                    <div class="worry-item">
+                        <i class="fas fa-phone-volume"></i>
+                        <p>電話やメールの対応に追われて、本来の業務に集中できない</p>
+                    </div>
+                    <div class="worry-item">
+                        <i class="fas fa-mobile-screen"></i>
+                        <p>SNSやブログを更新したいけど、時間も人手も足りない</p>
+                    </div>
+                    <div class="worry-item">
+                        <i class="fas fa-circle-question"></i>
+                        <p>AIが話題だけど、自分のビジネスにどう活かせるか分からない</p>
+                    </div>
+                    <div class="worry-item">
+                        <i class="fas fa-chart-line"></i>
+                        <p>ホームページを作ったけど、集客につながっていない</p>
+                    </div>
+                    <div class="worry-item">
+                        <i class="fas fa-user-slash"></i>
+                        <p>社内にITに詳しい人がいなくて、誰に相談すればいいか分からない</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile -->
+        <section id="profile" class="bg-white" aria-labelledby="profile-heading">
+            <div class="container">
+                <h2 class="section-title" id="profile-heading">はじめまして。牛久で活動するエンジニアです。</h2>
+                <div class="profile-box">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h3>Diego Alessandro</h3>
+                        <p class="role">AI活用相談 牛久 代表</p>
+                        <p class="motto">「ITの力で、地元のビジネスをもっと元気にしたい」</p>
+                        <p class="bio">
+                            IT業界で14年、数多くの開発プロジェクトに携わってきました。AIは今や大企業だけのものではありません。牛久の皆様が、AIを「頼れる相棒」として活用できるよう、開発から運用まで丁寧にサポートさせていただきます。
+                        </p>
+                        <div class="profile-badges">
+                            <span class="badge"><i class="fas fa-briefcase"></i> IT経験14年</span>
+                            <span class="badge"><i class="fas fa-code"></i> 開発実績50件以上</span>
+                            <span class="badge"><i class="fas fa-map-marker-alt"></i> 牛久市在住</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="bg-alt" aria-labelledby="services-heading">
+            <div class="container">
+                <h2 class="section-title" id="services-heading">中小企業のためのAI活用メニュー</h2>
                 <p class="section-subtitle">「ITの専門家がいない」とお悩みの企業様でも安心してお任せいただけます。</p>
-                <div class="grid">
-                    <div class="card">
-                        <i class="fas fa-robot"></i>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-robot"></i></div>
                         <h3>問い合わせ自動化</h3>
-                        <p>ChatGPTを活用し、LINEやWebサイト上で24時間365日、自動でお客様対応を行うボットを構築します。</p>
+                        <p>AIチャットボットで、LINEやWebサイト上で24時間365日、自動でお客様対応を行う仕組みを構築します。</p>
                         <ul class="benefit-list">
                             <li><i class="fas fa-check-circle"></i> スタッフの電話対応時間を削減</li>
                             <li><i class="fas fa-check-circle"></i> 夜間の見込み客を逃さない</li>
                         </ul>
                     </div>
-                    <div class="card">
-                        <i class="fas fa-wand-magic-sparkles"></i>
-                        <h3>事務作業の爆速化</h3>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-file-invoice"></i></div>
+                        <h3>事務作業の効率化</h3>
                         <p>請求書や日報、SNS投稿の作成など、時間のかかるデスクワークをAIが数秒で終わらせる仕組みを作ります。</p>
                         <ul class="benefit-list">
                             <li><i class="fas fa-check-circle"></i> 事務コストを大幅にカット</li>
                             <li><i class="fas fa-check-circle"></i> 入力ミスや漏れをゼロに</li>
                         </ul>
                     </div>
-                    <div class="card">
-                        <i class="fas fa-magnifying-glass-chart"></i>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
                         <h3>データ活用・集客支援</h3>
                         <p>顧客データや売上をAIで分析。地元のニーズに合わせた最適な販促プランを提案・実行支援します。</p>
                         <ul class="benefit-list">
@@ -339,10 +1008,10 @@
                             <li><i class="fas fa-check-circle"></i> リピート率の向上をデータで実現</li>
                         </ul>
                     </div>
-                    <div class="card">
-                        <i class="fas fa-rocket"></i>
-                        <h3>新規事業・アプリ開発</h3>
-                        <p>AIを搭載した独自のWebサービスやスマホアプリを、最新ツールを用いて圧倒的な速さでリリースします。</p>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>Webサービス・アプリ開発</h3>
+                        <p>AIを搭載した独自のWebサービスやスマホアプリを、最新ツールを用いてスピーディにリリースします。</p>
                         <ul class="benefit-list">
                             <li><i class="fas fa-check-circle"></i> 最小限の投資でテストが可能</li>
                             <li><i class="fas fa-check-circle"></i> 14年の経験で安定した品質</li>
@@ -352,82 +1021,176 @@
             </div>
         </section>
 
-        <section id="portfolio" style="background: rgba(0,0,0,0.2);">
+        <!-- Pricing Comparison -->
+        <section id="pricing" class="bg-white" aria-labelledby="pricing-heading">
             <div class="container">
-                <h2 class="section-title">開発実績</h2>
-                <div class="grid">
-                    <div class="portfolio-item">
-                        <div style="font-size: 5rem; color: var(--accent);"><i class="fas fa-baby"></i></div>
-                        <div class="portfolio-overlay">
+                <h2 class="section-title" id="pricing-heading">開発会社との料金比較</h2>
+                <p class="section-subtitle">AI活用で開発時間を大幅短縮。だから、この価格で実現できます。</p>
+                <div class="pricing-compare">
+                    <div class="pricing-card company">
+                        <span class="pricing-label">一般的な開発会社</span>
+                        <div class="pricing-row">
+                            <span class="service-name">AIチャットボット導入</span>
+                            <span class="price">50〜200万円</span>
+                        </div>
+                        <div class="pricing-row">
+                            <span class="service-name">業務自動化ツール</span>
+                            <span class="price">100〜300万円</span>
+                        </div>
+                        <div class="pricing-row">
+                            <span class="service-name">ホームページ制作</span>
+                            <span class="price">30〜100万円</span>
+                        </div>
+                        <div class="pricing-row">
+                            <span class="service-name">Webアプリ開発</span>
+                            <span class="price">300〜1,000万円</span>
+                        </div>
+                    </div>
+                    <div class="pricing-card ours">
+                        <span class="pricing-label">AI活用相談 牛久</span>
+                        <div class="pricing-row">
+                            <span class="service-name">AIチャットボット導入</span>
+                            <span class="price">5〜8万円</span>
+                        </div>
+                        <div class="pricing-row">
+                            <span class="service-name">業務自動化ツール</span>
+                            <span class="price">5〜10万円</span>
+                        </div>
+                        <div class="pricing-row">
+                            <span class="service-name">ホームページ制作</span>
+                            <span class="price">5〜8万円</span>
+                        </div>
+                        <div class="pricing-row">
+                            <span class="service-name">Webアプリ開発</span>
+                            <span class="price">15〜25万円</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pricing-reason">
+                    <div class="reason-item"><i class="fas fa-microchip"></i> AI活用で開発時間を大幅短縮</div>
+                    <div class="reason-item"><i class="fas fa-user"></i> 一人完結で中間マージンゼロ</div>
+                    <div class="reason-item"><i class="fas fa-building"></i> オフィス維持費なし</div>
+                </div>
+                <p class="pricing-note">※ 内容や規模により変動します。まずは無料相談でお見積りをお出しします。</p>
+            </div>
+        </section>
+
+        <!-- Process / Flow -->
+        <section id="process" class="bg-alt" aria-labelledby="process-heading">
+            <div class="container">
+                <h2 class="section-title" id="process-heading">ご利用の流れ</h2>
+                <p class="section-subtitle">初めての方でも安心。まずはお気軽にご相談ください。</p>
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="step-number free">1</div>
+                        <h3>無料相談</h3>
+                        <p>お悩みやご要望を<br>じっくりお聞きします</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3>ご提案・お見積り</h3>
+                        <p>最適なプランと<br>費用をご提示します</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3>開発・導入</h3>
+                        <p>スピーディに開発し<br>現場に導入します</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h3>サポート・改善</h3>
+                        <p>運用後も継続的に<br>改善をサポートします</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio -->
+        <section id="portfolio" class="bg-white" aria-labelledby="portfolio-heading">
+            <div class="container">
+                <h2 class="section-title" id="portfolio-heading">開発実績</h2>
+                <p class="section-subtitle">AIを活用したプロダクトの開発実績です。</p>
+                <div class="portfolio-grid">
+                    <div class="portfolio-card">
+                        <div class="portfolio-header">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <div class="portfolio-body">
                             <h3>iiba</h3>
-                            <p>AIを活用した次世代モバイルアプリ開発</p>
+                            <p class="desc">家族向けお出かけスポット検索アプリ。AIがユーザーの好みを理解し、最適なスポットを提案します。</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Flutter</span>
+                                <span class="portfolio-tag">Gemini AI</span>
+                                <span class="portfolio-tag">Google Maps</span>
+                            </div>
+                            <p class="portfolio-result"><i class="fas fa-check-circle"></i> AIチャット検索を実装</p>
                         </div>
                     </div>
-                    <div class="portfolio-item">
-                        <div style="font-size: 5rem; color: var(--secondary);"><i class="fas fa-book-open-reader"></i></div>
-                        <div class="portfolio-overlay">
-                            <a href="https://ehon-assistant.jp" target="_blank" style="color: white; text-decoration: none;">
-                                <h3>絵本アシスタント <i class="fas fa-external-link-alt" style="font-size: 1rem;"></i></h3>
-                                <p>AI絵本作成支援。企画から実装までAIで完結。</p>
-                            </a>
+                    <div class="portfolio-card">
+                        <div class="portfolio-header" style="background: var(--accent-light);">
+                            <i class="fas fa-book-open-reader" style="color: var(--accent);"></i>
+                        </div>
+                        <div class="portfolio-body">
+                            <h3>
+                                <a href="https://ehon-assistant.jp" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
+                                    絵本アシスタント <i class="fas fa-external-link-alt" style="font-size: 0.75rem; color: var(--text-sub);"></i>
+                                </a>
+                            </h3>
+                            <p class="desc">AIを活用した絵本作成支援サービス。企画からイラスト生成、レイアウトまでAIがサポートします。</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">AI生成</span>
+                                <span class="portfolio-tag">Web App</span>
+                                <span class="portfolio-tag">画像生成</span>
+                            </div>
+                            <p class="portfolio-result"><i class="fas fa-check-circle"></i> 企画から実装までAIで完結</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="faq">
+        <!-- FAQ -->
+        <section id="faq" class="bg-alt" aria-labelledby="faq-heading">
             <div class="container">
-                <h2 class="section-title">よくあるご質問</h2>
-                <div class="faq">
-                    <div class="faq-item">
-                        <div class="faq-q"><span>Q.</span> AIのことは全くわかりませんが大丈夫ですか？</div>
-                        <div class="faq-a">A. はい、もちろんです。専門用語を使わず、お客様のビジネスがどう楽になるか、具体的にお話しさせていただきます。</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-q"><span>Q.</span> 予算が少なくても相談できますか？</div>
-                        <div class="faq-a">A. ご安心ください。まずはスモールスタートで効果を実感いただけるプランを、ご予算に合わせてご提案いたします。</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-q"><span>Q.</span> 対面での相談は可能ですか？</div>
-                        <div class="faq-a">A. はい。牛久市・つくば市周辺であれば、直接お伺いしての打ち合わせも可能です。地元のエンジニアだからこそのフットワークで対応します。</div>
-                    </div>
+                <h2 class="section-title" id="faq-heading">よくあるご質問</h2>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>AIのことは全くわかりませんが大丈夫ですか？</summary>
+                        <div class="faq-answer">はい、もちろんです。専門用語を使わず、お客様のビジネスがどう楽になるか、具体的にお話しさせていただきます。「こんなこと聞いていいのかな？」ということも遠慮なくどうぞ。</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>相談だけで費用はかかりますか？</summary>
+                        <div class="faq-answer">初回30分の無料相談は完全無料です。お悩みをお聞きし、AIで解決できるかどうかを一緒に考えます。無理な勧誘は一切ありませんので、お気軽にどうぞ。</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>予算が少なくても相談できますか？</summary>
+                        <div class="faq-answer">ご安心ください。まずはスモールスタートで効果を実感いただけるプランを、ご予算に合わせてご提案いたします。月額数千円から始められるメニューもございます。</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>完成までどのくらいかかりますか？</summary>
+                        <div class="faq-answer">内容によりますが、簡単なチャットボットなら最短1〜2週間、Webサービスの場合は1〜2ヶ月が目安です。初回相談時に具体的なスケジュールをお伝えします。</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>対面での相談は可能ですか？</summary>
+                        <div class="faq-answer">はい。牛久市・つくば市周辺であれば、直接お伺いしての打ち合わせも可能です。地元のエンジニアだからこそのフットワークで対応します。オンラインでのご相談ももちろん対応しています。</div>
+                    </details>
                 </div>
             </div>
         </section>
 
-        <section id="profile">
-            <div class="container">
-                <div class="profile-box">
-                    <div class="profile-img">👨‍💻</div>
-                    <div>
-                        <h2 style="margin-bottom: 0.5rem;">Diego Alessandro</h2>
-                        <p style="color: var(--accent); font-weight: 700; margin-bottom: 1.5rem;">AI爆速開発 代表 / IT業界14年</p>
-                        <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
-                            「ITの力で、地元のビジネスをもっと元気にしたい」
-                        </p>
-                        <p>
-                            IT業界で14年、数多くの開発プロジェクトに携わってきました。AIは今や大企業だけのものではありません。牛久の皆様が、AIを「頼れる従業員」として活用できるよう、開発から運用まで泥臭くサポートさせていただきます。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
+        <!-- CTA -->
+        <section id="contact" aria-labelledby="cta-heading">
             <div class="container">
                 <div class="cta-section">
-                    <h2 style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1.5rem;">まずは、あなたの<br>「困りごと」をお聞かせください</h2>
-                    <p style="margin-bottom: 3.5rem; font-size: 1.2rem; color: var(--text-dim);">
+                    <h2 id="cta-heading">まずは、あなたの<br>「困りごと」をお聞かせください</h2>
+                    <p>
                         無理な勧誘は一切ありません。地元の知り合いに相談する感覚で、<br>
                         気軽にお問い合わせください。
                     </p>
-                    <a href="mailto:diegobacigalupo8@gmail.com" class="btn btn-primary" style="font-size: 1.4rem;">
+                    <a href="mailto:diegobacigalupo8@gmail.com" class="btn btn-accent">
                         <i class="fas fa-envelope"></i> メールで無料相談する
                     </a>
-                    <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-dim);">
-                        ※牛久・つくば周辺は訪問相談も承ります
-                    </p>
+                    <p class="cta-note">※牛久・つくば周辺は訪問相談も承ります</p>
                 </div>
             </div>
         </section>
@@ -435,9 +1198,40 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 AI爆速開発 (Diego Alessandro). All Rights Reserved.</p>
-            <p style="margin-top: 1rem; opacity: 0.4; font-size: 0.7rem;">Ushiku, Ibaraki, Japan</p>
+            <p>&copy; 2026 AI活用相談 牛久 (Diego Alessandro). All Rights Reserved.</p>
+            <p class="footer-sub">Ushiku, Ibaraki, Japan</p>
         </div>
     </footer>
+
+    <script>
+    // Hamburger menu
+    (function() {
+        var btn = document.getElementById('hamburger');
+        var nav = document.getElementById('navLinks');
+        btn.addEventListener('click', function() {
+            var expanded = nav.classList.toggle('active');
+            btn.setAttribute('aria-expanded', expanded);
+            btn.querySelector('i').className = expanded ? 'fas fa-times' : 'fas fa-bars';
+        });
+        nav.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                nav.classList.remove('active');
+                btn.setAttribute('aria-expanded', 'false');
+                btn.querySelector('i').className = 'fas fa-bars';
+            }
+        });
+    })();
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+    </script>
 </body>
 </html>
