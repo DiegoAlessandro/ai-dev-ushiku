@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ai-dev-ushiku.jp/sitemap.xml
+Sitemap: https://ushiku-ai.jp/sitemap.xml
