@@ -46,6 +46,7 @@
         "email": "diegobacigalupo8@gmail.com",
         "address": {
             "@type": "PostalAddress",
+            "streetAddress": "栄町",
             "addressLocality": "牛久市",
             "addressRegion": "茨城県",
             "addressCountry": "JP"
@@ -332,20 +333,18 @@
         }
 
         .profile-avatar {
-            width: 140px;
-            height: 140px;
-            background: var(--primary-pale);
+            width: 160px;
+            height: 160px;
             border: 3px solid var(--primary);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             flex-shrink: 0;
+            overflow: hidden;
         }
 
-        .profile-avatar i {
-            font-size: 3.5rem;
-            color: var(--primary);
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .profile-info h2 {
@@ -434,6 +433,22 @@
             font-size: 1.2rem;
             margin-bottom: 0.75rem;
             color: var(--text);
+        }
+
+        .service-tags {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-tag {
+            padding: 0.15rem 0.5rem;
+            background: var(--accent-light);
+            color: var(--accent);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
         }
 
         .service-card > p {
@@ -658,6 +673,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            aspect-ratio: 1200 / 630;
+            overflow: hidden;
         }
 
         .portfolio-header i {
@@ -880,8 +897,7 @@
             .worry-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: 1fr; }
             .portfolio-grid { grid-template-columns: 1fr; }
-            .profile-avatar { width: 110px; height: 110px; }
-            .profile-avatar i { font-size: 2.75rem; }
+            .profile-avatar { width: 120px; height: 120px; }
         }
     </style>
 </head>
@@ -937,19 +953,19 @@
                 <div class="worry-grid">
                     <div class="worry-item">
                         <i class="fas fa-phone-volume"></i>
-                        <p>電話やメールの対応に追われて、本来の業務に集中できない</p>
+                        <p>接客中に電話が鳴り止まない。営業後の事務作業が深夜まで続く</p>
                     </div>
                     <div class="worry-item">
-                        <i class="fas fa-mobile-screen"></i>
-                        <p>SNSやブログを更新したいけど、時間も人手も足りない</p>
+                        <i class="fas fa-store"></i>
+                        <p>つくばの大型モールにお客を取られたくない。でもSNS更新が続かない</p>
                     </div>
                     <div class="worry-item">
                         <i class="fas fa-circle-question"></i>
                         <p>AIが話題だけど、自分のビジネスにどう活かせるか分からない</p>
                     </div>
                     <div class="worry-item">
-                        <i class="fas fa-chart-line"></i>
-                        <p>ホームページを作ったけど、集客につながっていない</p>
+                        <i class="fas fa-file-pen"></i>
+                        <p>ベテランのノウハウが紙のまま。若手に引き継げていない</p>
                     </div>
                     <div class="worry-item">
                         <i class="fas fa-user-slash"></i>
@@ -965,7 +981,7 @@
                 <h2 class="section-title" id="profile-heading">はじめまして。牛久で活動するエンジニアです。</h2>
                 <div class="profile-box">
                     <div class="profile-avatar">
-                        <i class="fas fa-user-tie"></i>
+                        <img src="profile_photo.png" alt="Diego Alessandro - AI活用相談 牛久 代表" width="160" height="160">
                     </div>
                     <div class="profile-info">
                         <h3>Diego Alessandro</h3>
@@ -977,7 +993,7 @@
                         <div class="profile-badges">
                             <span class="badge"><i class="fas fa-briefcase"></i> IT経験14年</span>
                             <span class="badge"><i class="fas fa-code"></i> 開発実績50件以上</span>
-                            <span class="badge"><i class="fas fa-map-marker-alt"></i> 牛久市在住</span>
+                            <span class="badge"><i class="fas fa-map-marker-alt"></i> 茨城県牛久市栄町</span>
                         </div>
                     </div>
                 </div>
@@ -992,38 +1008,58 @@
                 <div class="services-grid">
                     <div class="service-card">
                         <div class="service-icon"><i class="fas fa-robot"></i></div>
-                        <h3>問い合わせ自動化</h3>
-                        <p>AIチャットボットで、LINEやWebサイト上で24時間365日、自動でお客様対応を行う仕組みを構築します。</p>
+                        <h3>24時間AI接客・予約代行</h3>
+                        <div class="service-tags">
+                            <span class="service-tag">飲食</span>
+                            <span class="service-tag">美容</span>
+                            <span class="service-tag">クリニック</span>
+                        </div>
+                        <p>LINEやWebサイトにAIチャットボットを導入。空席確認、メニュー案内、予約受付を24時間自動で対応します。</p>
                         <ul class="benefit-list">
-                            <li><i class="fas fa-check-circle"></i> スタッフの電話対応時間を削減</li>
-                            <li><i class="fas fa-check-circle"></i> 夜間の見込み客を逃さない</li>
+                            <li><i class="fas fa-check-circle"></i> 接客中の電話対応から解放</li>
+                            <li><i class="fas fa-check-circle"></i> 夜間・休日の予約も取り逃がさない</li>
                         </ul>
                     </div>
                     <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-file-invoice"></i></div>
-                        <h3>事務作業の効率化</h3>
-                        <p>請求書や日報、SNS投稿の作成など、時間のかかるデスクワークをAIが数秒で終わらせる仕組みを作ります。</p>
+                        <div class="service-icon"><i class="fas fa-microphone-lines"></i></div>
+                        <h3>日報・書類のAI自動清書</h3>
+                        <div class="service-tags">
+                            <span class="service-tag">建設</span>
+                            <span class="service-tag">製造</span>
+                            <span class="service-tag">医療</span>
+                        </div>
+                        <p>現場からスマホで吹き込んだ音声メモを、AIがプロ品質の報告書・請求明細に自動変換。深夜の事務作業をゼロに。</p>
                         <ul class="benefit-list">
-                            <li><i class="fas fa-check-circle"></i> 事務コストを大幅にカット</li>
-                            <li><i class="fas fa-check-circle"></i> 入力ミスや漏れをゼロに</li>
+                            <li><i class="fas fa-check-circle"></i> 事務作業の時間を大幅カット</li>
+                            <li><i class="fas fa-check-circle"></i> ベテランの知見もデジタルで記録</li>
                         </ul>
                     </div>
                     <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
-                        <h3>データ活用・集客支援</h3>
-                        <p>顧客データや売上をAIで分析。地元のニーズに合わせた最適な販促プランを提案・実行支援します。</p>
+                        <div class="service-icon"><i class="fas fa-hashtag"></i></div>
+                        <h3>SNS集客の自動化</h3>
+                        <div class="service-tags">
+                            <span class="service-tag">小売</span>
+                            <span class="service-tag">飲食</span>
+                            <span class="service-tag">サービス業</span>
+                        </div>
+                        <p>「今日のおすすめ」を一言入力するだけで、ハッシュタグ付きのInstagram・LINE投稿文を3秒で自動生成します。</p>
                         <ul class="benefit-list">
-                            <li><i class="fas fa-check-circle"></i> 牛久周辺の市場に合わせた集客</li>
-                            <li><i class="fas fa-check-circle"></i> リピート率の向上をデータで実現</li>
+                            <li><i class="fas fa-check-circle"></i> つくば周辺のお客様へ効率的にリーチ</li>
+                            <li><i class="fas fa-check-circle"></i> 毎日の更新が苦にならない</li>
                         </ul>
                     </div>
                     <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-                        <h3>Webサービス・アプリ開発</h3>
-                        <p>AIを搭載した独自のWebサービスやスマホアプリを、最新ツールを用いてスピーディにリリースします。</p>
+                        <div class="service-icon"><i class="fas fa-wine-bottle"></i></div>
+                        <h3>商品ブランディングAI</h3>
+                        <div class="service-tags">
+                            <span class="service-tag">農業</span>
+                            <span class="service-tag">伝統産業</span>
+                            <span class="service-tag">EC</span>
+                        </div>
+                        <p>牛久ワインや地産品のこだわりを一言伝えるだけで、ECサイトやチラシに使える「物語のある商品説明文」を生成。</p>
                         <ul class="benefit-list">
-                            <li><i class="fas fa-check-circle"></i> 最小限の投資でテストが可能</li>
-                            <li><i class="fas fa-check-circle"></i> 14年の経験で安定した品質</li>
+                            <li><i class="fas fa-check-circle"></i> 商品の魅力を全国へ発信</li>
+                            <li><i class="fas fa-check-circle"></i> プロのコピーライター不要</li>
                         </ul>
                     </div>
                 </div>
@@ -1121,24 +1157,9 @@
                 <p class="section-subtitle">AIを活用したプロダクトの開発実績です。</p>
                 <div class="portfolio-grid">
                     <div class="portfolio-card">
-                        <div class="portfolio-header">
-                            <i class="fas fa-baby"></i>
-                        </div>
-                        <div class="portfolio-body">
-                            <h3>iiba</h3>
-                            <p class="desc">家族向けお出かけスポット検索アプリ。AIがユーザーの好みを理解し、最適なスポットを提案します。</p>
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Flutter</span>
-                                <span class="portfolio-tag">Gemini AI</span>
-                                <span class="portfolio-tag">Google Maps</span>
-                            </div>
-                            <p class="portfolio-result"><i class="fas fa-check-circle"></i> AIチャット検索を実装</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-card">
-                        <div class="portfolio-header" style="background: var(--accent-light);">
-                            <i class="fas fa-book-open-reader" style="color: var(--accent);"></i>
-                        </div>
+                        <a href="https://ehon-assistant.jp" target="_blank" rel="noopener noreferrer" class="portfolio-header" style="padding: 0; background: none;">
+                            <img src="https://ehon-assistant.jp/opengraph-image" alt="絵本アシスタント - AI絵本作成支援サービス" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        </a>
                         <div class="portfolio-body">
                             <h3>
                                 <a href="https://ehon-assistant.jp" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
