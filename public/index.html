@@ -80,11 +80,65 @@
     }
     </script>
 
+    <!-- FAQ 構造化データ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "AIのことは全くわかりませんが大丈夫ですか？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "はい、もちろんです。専門用語を使わず、お客様のビジネスがどう楽になるか、具体的にお話しさせていただきます。「こんなこと聞いていいのかな？」ということも遠慮なくどうぞ。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "相談だけで費用はかかりますか？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "初回30分の無料相談は完全無料です。お悩みをお聞きし、AIで解決できるかどうかを一緒に考えます。無理な勧誘は一切ありませんので、お気軽にどうぞ。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "予算が少なくても相談できますか？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ご安心ください。まずはスモールスタートで効果を実感いただけるプランを、ご予算に合わせてご提案いたします。月額数千円から始められるメニューもございます。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "完成までどのくらいかかりますか？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "内容によりますが、簡単なチャットボットなら最短1〜2週間、Webサービスの場合は1〜2ヶ月が目安です。初回相談時に具体的なスケジュールをお伝えします。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "対面での相談は可能ですか？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "はい。牛久市・つくば市周辺であれば、直接お伺いしての打ち合わせも可能です。地元のエンジニアだからこそのフットワークで対応します。オンラインでのご相談ももちろん対応しています。"
+                }
+            }
+        ]
+    }
+    </script>
+
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
     <style>
         :root {
